@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './componants/elements/Header';
+import Footer from './componants/elements/Footer';
+import Modal from './componants/elements/Modal';
 
-function App() {
+import Home from './componants/pages/Home';
+import Profile from './componants/pages/Profile';
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState('Home');
+  const [modal, setModal] = useState(true);
+
+  const renderPage = () => {
+    if (currentPage === 'Home') {
+      return <Home />;
+    }
+    if (currentPage === 'Profile') {
+      return <Profile />;
+    }
+    return <Home />;
+  }
+
+  const handleModal = () => setModal(false)
+  
+  const renderModal = () => {
+    if (modal) {
+      return <Modal handleModal={handleModal}/>
+    }
+    return;
+  }
+
+  const handlePageChange = (page) => setCurrentPage(page);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {renderModal()}
+      <Header />
+      {renderPage()}
+      <Footer />
     </div>
   );
 }
-
-export default App;

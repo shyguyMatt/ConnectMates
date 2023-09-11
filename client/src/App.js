@@ -1,18 +1,27 @@
-import logo from './logo.svg';
-import './styles/App.css';
-
+import React, { useState } from 'react';
 import Header from './componants/elements/Header';
 import Footer from './componants/elements/Footer';
 import Home from './componants/pages/Home';
+import Profile from './componants/pages/Profile';
 
-function App() {
+export default function App() {
+  const [currentPage, setCurrentPage] = useState('Home');
+
+  const renderPage = () => {
+    if (currentPage === 'Home') {
+      return <Home />;
+    }
+    if (currentPage === 'Profile') {
+      return <Profile />;
+    }
+    return <Home />;
+  }
+
   return (
     <div>
       <Header />
-      <Home />
+      {renderPage()}
       <Footer />
     </div>
   );
 }
-
-export default App;

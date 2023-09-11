@@ -1,0 +1,32 @@
+.modal {
+  position: absolute;
+  top: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: #333;
+  opacity: 90%;
+}
+
+.close {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 5px;
+  top: 5px;
+  background-color: #333;
+  color: white;
+  font-size: 20px;
+  border-radius: 100%;
+  border: #333;
+}
+
+.content {
+  transform: translate(50%, 50%);
+  width: fit-content;
+  min-width: 50vw;
+  height: fit-content;
+  min-height: 50vh;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

@@ -17,6 +17,8 @@ export default function App() {
     return <Home />;
   }
 
+  const handlePageChange = (page) => setCurrentPage(page);
+
   return (
     <div>
       <Header />

@@ -46,7 +46,7 @@ function Navbar({ visible, show }) {
                         />
                     </NavLink>
                     <div className="links nav-top">
-                        <NavLink to="/" className="nav-link">
+                        <NavLink to="/xpagename" className="nav-link">
                             <FaReadme size={ICON_SIZE} />
                             <span className="font"></span>
                         </NavLink>

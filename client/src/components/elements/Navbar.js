@@ -10,7 +10,7 @@ import {
     FaTree
 } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
-import "../style/navbar.css";
+import './../../styles/navbar.css';
 
 const ICON_SIZE = 20;
 
@@ -41,7 +41,7 @@ function Navbar({ visible, show }) {
                         to="https://github.com/"
                     >
                         <img
-                            src={require("../assets/images/logo.png")}
+                            src={require('./../../assets/images/logo.png')}
                             alt="logo"
                         />
                     </NavLink>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from '';
+// import Auth from '';
 import 'tailwindcss/tailwind.css';
 
 export default function UserHome() {

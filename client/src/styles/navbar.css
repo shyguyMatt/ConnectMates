@@ -7,7 +7,7 @@ nav {
     justify-content: space-between;
     width: 15%;
     min-height: 100vh;
-    background-image: url("../assets/images/navbar-scroll.png");
+    background-image: url('./../assets/images/navbar-scroll.png');
     background-size: cover;
     padding: 2rem 1rem 1rem 1rem;
     transition: transform 1s;

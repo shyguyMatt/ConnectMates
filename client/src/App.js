@@ -1,4 +1,4 @@
-import Navbar from '.components/elements/Navbar';
+import Navbar from './components/elements/Navbar';
 import React, { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Footer from './components/elements/Footer';

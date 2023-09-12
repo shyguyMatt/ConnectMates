@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import Header from './componants/elements/Header';
-import Footer from './componants/elements/Footer';
-import Modal from './componants/elements/Modal';
-
-import Home from './componants/pages/Home';
-import Profile from './componants/pages/Profile';
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Header from './components/elements/Header';
+import Footer from './components/elements/Footer';
+import Modal from './components/elements/Modal';
+import Navbar from '.components/elements/Navbar';
+import Home from './components/pages/Home';
+import Profile from './components/pages/Profile';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('Home');
   const [modal, setModal] = useState(true);
+  const [navVisible, showNavbar] = useState(false);
 
   const renderPage = () => {
     if (currentPage === 'Home') {
@@ -31,13 +33,21 @@ export default function App() {
 
   const handlePageChange = (page) => setCurrentPage(page);
 
-
   return (
+    <BrowserRouter >
+    <div className="App">
+        <Navbar visible={navVisible} show={showNavbar} />
+        <Routes>
+        <Route path="/connectmates" element={<Navigate to="/" />} />
+        <Route path='/xpagename' element={
+                        <div className={!navVisible ? "page" : "page page-with-navbar"}>
+                            <Footer />
+                        </div>
+                    } />
     <div>
-      {renderModal()}
-      <Header />
-      {renderPage()}
-      <Footer />
+      </Routes>
+
     </div>
+    </BrowserRouter>
   );
 }

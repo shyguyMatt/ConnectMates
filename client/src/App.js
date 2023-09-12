@@ -10,10 +10,10 @@ import SignupForm from './components/forms/SignupForm';
 
 export default function App() {
 
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState('');
   const [navVisible, showNavbar] = useState(false);
 
-  const handleModal = () => setModal(false)
+  const handleModalClose = () => setModal('')
 
   const renderModal = () => {
     if (modal) {

@@ -9,6 +9,7 @@ import Profile from './components/pages/Profile';
 import SignupForm from './components/forms/SignupForm';
 
 export default function App() {
+
   const [modal, setModal] = useState(true);
   const [navVisible, showNavbar] = useState(false);
 
@@ -16,7 +17,7 @@ export default function App() {
 
   const renderModal = () => {
     if (modal) {
-      return <Modal handleModal={handleModal} />
+      return <Modal modal={modal} handleModalClose={handleModalClose} />
     }
     return;
   }
@@ -24,6 +25,7 @@ export default function App() {
   return (
     <BrowserRouter >
       <div className="App">
+        {renderModal()}
         <Navbar visible={navVisible} show={showNavbar} />
         <Routes>
           <Route path="/connectmates" element={<Navigate to="/" />} />

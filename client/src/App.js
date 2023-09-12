@@ -9,7 +9,7 @@ import Profile from './components/pages/Profile';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('Home');
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState('');
   const [navVisible, showNavbar] = useState(false);
 
   const renderPage = () => {
@@ -22,11 +22,11 @@ export default function App() {
     return <Home />;
   }
 
-  const handleModal = () => setModal(false)
+  const handleModalClose = () => setModal('')
 
   const renderModal = () => {
     if (modal) {
-      return <Modal handleModal={handleModal} />
+      return <Modal modal={modal} handleModalClose={handleModalClose} />
     }
     return;
   }
@@ -36,6 +36,7 @@ export default function App() {
   return (
     <BrowserRouter >
       <div className="App">
+        {renderModal()}
         <Navbar visible={navVisible} show={showNavbar} />
         <Routes>
           <Route path="/connectmates" element={<Navigate to="/" />} />

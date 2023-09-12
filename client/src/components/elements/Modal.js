@@ -3,23 +3,20 @@ import Home from './../pages/Home'
 
 import '../../styles/modal.css'
 
-export default function Modal( modal, handleModal ) {
-  const [currentContent, setCurrentContent] = useState('Home');
-
+export default function Modal({ modal, handleModalClose }) {
+  console.log(modal)
   const renderContent = () => {
-    if (currentContent === 'Home') {
-      return<Home />;
+    if (modal === 'Home') {
+      return <Home />;
     }
     return;
   }
-
-  const handleContentChange = (content) => setCurrentContent(content);
 
   return(
     <div className='modal'>
       <div className='content'>
         <button className='close'
-          onClick={() => handleModal()}
+          onClick={() => handleModalClose()}
         />
         {renderContent()}
       </div>

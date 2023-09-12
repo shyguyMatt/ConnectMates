@@ -6,23 +6,14 @@ import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
+import SignupForm from './components/forms/SignupForm';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('Home');
-  const [modal, setModal] = useState('');
+
+  const [modal, setModal] = useState(true);
   const [navVisible, showNavbar] = useState(false);
 
-  const renderPage = () => {
-    if (currentPage === 'Home') {
-      return <Home />;
-    }
-    if (currentPage === 'Profile') {
-      return <Profile />;
-    }
-    return <Home />;
-  }
-
-  const handleModalClose = () => setModal('')
+  const handleModal = () => setModal(false)
 
   const renderModal = () => {
     if (modal) {
@@ -30,8 +21,6 @@ export default function App() {
     }
     return;
   }
-
-  const handlePageChange = (page) => setCurrentPage(page);
 
   return (
     <BrowserRouter >
@@ -45,6 +34,7 @@ export default function App() {
               <Footer />
             </div>
           } />
+          <Route path='/signup' element={<SignupForm />} />
         </Routes>
 
       </div>

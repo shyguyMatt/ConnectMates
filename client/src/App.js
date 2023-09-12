@@ -6,6 +6,7 @@ import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
+import SignupForm from './components/forms/SignupForm';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -44,6 +45,7 @@ export default function App() {
               <Footer />
             </div>
           } />
+          <Route path='/signup' element={<SignupForm />} />
         </Routes>
 
       </div>

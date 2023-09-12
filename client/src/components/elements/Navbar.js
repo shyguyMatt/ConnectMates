@@ -41,7 +41,7 @@ function Navbar({ visible, show }) {
                         to="https://github.com/"
                     >
                         <img
-                            src={require('./../../assets/images/logo.png')}
+                            src={require('./../../assets/images/logo1.png')}
                             alt="logo"
                         />
                     </NavLink>

@@ -8,19 +8,8 @@ import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('Home');
   const [modal, setModal] = useState(true);
   const [navVisible, showNavbar] = useState(false);
-
-  const renderPage = () => {
-    if (currentPage === 'Home') {
-      return <Home />;
-    }
-    if (currentPage === 'Profile') {
-      return <Profile />;
-    }
-    return <Home />;
-  }
 
   const handleModal = () => setModal(false)
 
@@ -30,8 +19,6 @@ export default function App() {
     }
     return;
   }
-
-  const handlePageChange = (page) => setCurrentPage(page);
 
   return (
     <BrowserRouter >

@@ -12,7 +12,6 @@ export default function App() {
   const [modal, setModal] = useState(true);
   const [navVisible, showNavbar] = useState(false);
 
-
   const renderPage = () => {
     if (currentPage === 'Home') {
       return <Home />;
@@ -34,7 +33,6 @@ export default function App() {
 
   const handlePageChange = (page) => setCurrentPage(page);
 
-
   return (
     <BrowserRouter >
     <div className="App">
@@ -46,14 +44,10 @@ export default function App() {
                             <Footer />
                         </div>
                     } />
-      {renderModal()}
-      <Header />
-      {renderPage()}
-      <Footer />
+    <div>
       </Routes>
+
     </div>
     </BrowserRouter>
   );
 }
-
-

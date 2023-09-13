@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const User = require('./User');
 
 const groupSchema = new Schema({
     admin: {
@@ -10,7 +8,12 @@ const groupSchema = new Schema({
         ref: 'User',
         required: true
     },
-    // users: [User.Schema],
+    users: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
     groupsize: {
         type: Number,
         min: 2,
@@ -18,5 +21,5 @@ const groupSchema = new Schema({
     }
 });
 
-const Group = mongoose.model('Group',groupSchema);
+const Group = model('Group',groupSchema);
 module.exports = Group;

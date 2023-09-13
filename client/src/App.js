@@ -1,4 +1,3 @@
-import Navbar from './components/elements/Navbar';
 import React, { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
@@ -6,9 +5,10 @@ import { setContext } from '@apollo/client/link/context';
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
-import Home from './components/pages/Home';
-import Profile from './components/pages/Profile';
-import SignupForm from './components/forms/SignupForm';
+import SearchBar from './components/elements/SearchBar';
+import Home from './components/Pages/Home';
+import Profile from './components/Pages/Profile';
+import Navbar from './components/elements/Navbar';
 
 export default function App() {
 

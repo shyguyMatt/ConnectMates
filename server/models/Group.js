@@ -10,7 +10,7 @@ const groupSchema = new Schema({
         ref: 'User',
         required: true
     },
-    users: [User.Schema],
+    // users: [User.Schema],
     groupsize: {
         type: Number,
         min: 2,

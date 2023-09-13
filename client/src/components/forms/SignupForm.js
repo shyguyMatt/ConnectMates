@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { from, useMutation } from '@apollo/client';
-// import { ADD_USER } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+
+import Auth from './../../utils/auth'
 
 export default function SignupForm() {
-  const [formState, setFormState] = useState({ email: '', name: '', password: ''});
-  // const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,15 +24,15 @@ export default function SignupForm() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     
-    // try {
-    //   const { data } = await ADD_USER({
-    //     variables: { ...formState },
-    //   });
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
 
-    //   Auth.login(data.addUser.token);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+      Auth.login(data.addUser.token);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return(

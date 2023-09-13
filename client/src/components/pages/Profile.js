@@ -1,22 +1,23 @@
 import React from 'react';
 // import Auth from '';
-import 'tailwindcss/tailwind.css';
+import './../../styles/Profile.css';
 
-export default function UserHome() {
+
+export default function Profile() {
     return (
-    <div className='userHome-container'>
+    <div className='userHome' >
         <section>
          <h1>user name </h1>
-            <section>
-             <div>
-              <img src="" alt="User Profile Picture"/>
+            <section className='bio'>
+             <div  className="max-w-md mx-auto bg-white rounded p-4 shadow-md">
+              <img src="" alt="User Profile"   className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden"/>
               <button> Add Profile Picture  </button>
              </div>
              <div>
               <p> user bio </p>
               <button> ADD BIO </button>
              </div>
-        </section>
+            </section>
         </section>
         <aside>
          <h3>Selected Code Languages </h3>
@@ -26,11 +27,6 @@ export default function UserHome() {
           </ul>
          <button> Add New Languages </button>
         </aside>
-        <section>
-            <h3>Search Joinable Projects </h3>
-            <input type="text" placeholder="Search For Projects"/>
-            <button> Search </button>
-        </section>
         <section>
             <h3>Completed Projects </h3>
             <ul>

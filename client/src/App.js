@@ -3,11 +3,13 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
+import SearchBar from './components/elements/SearchBar';
+import Home from './components/Pages/Home';
+import Profile from './components/Pages/Profile';
 import Navbar from './components/elements/Navbar';
 import SignupForm from './components/forms/SignupForm';
-import Home from './components/pages/Home';
-import Profile from './components/pages/Profile';
-import SignupForm from './components/forms/SignupForm';
+
+
 
 export default function App() {
 
@@ -28,15 +30,18 @@ export default function App() {
       <div className="App">
         {renderModal()}
         <Navbar visible={navVisible} show={showNavbar} />
+        <SearchBar/>
         <Header />
         <Routes>
-          <Route path="/connectmates" element={<Navigate to="/" />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/connectmates" element={<Navigate to="/" />} />\
           <Route path='/xpagename' element={
             <div className={!navVisible ? "page" : "page page-with-navbar"}>
               <Footer />
             </div>
           } />
           <Route path='/signup' element={<SignupForm />} />
+
         </Routes>
 
       </div>

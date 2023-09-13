@@ -7,9 +7,6 @@ import SearchBar from './components/elements/SearchBar';
 import Home from './components/Pages/Home';
 import Profile from './components/Pages/Profile';
 import Navbar from './components/elements/Navbar';
-// import SignupForm from './components/forms/SignupForm';
-import Home from './components/pages/Home';
-import Profile from './components/pages/Profile';
 
 export default function App() {
 

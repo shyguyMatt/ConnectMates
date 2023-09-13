@@ -1,6 +1,8 @@
 import Navbar from './components/elements/Navbar';
 import React, { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
@@ -22,22 +24,43 @@ export default function App() {
     return;
   }
 
-  return (
-    <BrowserRouter >
-      <div className="App">
-        {renderModal()}
-        <Navbar visible={navVisible} show={showNavbar} />
-        <Routes>
-          <Route path="/connectmates" element={<Navigate to="/" />} />
-          <Route path='/xpagename' element={
-            <div className={!navVisible ? "page" : "page page-with-navbar"}>
-              <Footer />
-            </div>
-          } />
-          <Route path='/signup' element={<SignupForm />} />
-        </Routes>
+  const httpLink = createHttpLink({
+    uri: '/graphql',
+  });
+  
+  const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('id_token');
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    };
+  }); 
 
-      </div>
-    </BrowserRouter>
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+  });
+
+  return (
+    <ApolloProvider client={client}>
+      <BrowserRouter >
+        <div className="App">
+          {renderModal()}
+          <Navbar visible={navVisible} show={showNavbar} />
+          <Routes>
+            <Route path="/connectmates" element={<Navigate to="/" />} />
+            <Route path='/xpagename' element={
+              <div className={!navVisible ? "page" : "page page-with-navbar"}>
+                <Footer />
+              </div>
+            } />
+            <Route path='/signup' element={<SignupForm />} />
+          </Routes>
+
+        </div>
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }

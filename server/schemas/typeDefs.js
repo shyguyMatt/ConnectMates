@@ -9,6 +9,11 @@ type User {
     interests: [Interest]
 }
 
+type Auth {
+    token: ID!
+    user: User
+}
+
 type Group {
     admin: User
     users: [User]
@@ -23,6 +28,17 @@ type Interest {
 
 type Query {
   hello: String
+  users: [User]!
+  user(userId: ID!): User
+}
+
+type Mutation {
+    addUser(name: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+
+    addInterest(userId: ID!, interest: String!): user
+    removeUser(userId: ID!): User
+    removeInterest(userId: ID!, interest: String!): User
 }
 `;
 

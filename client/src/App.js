@@ -1,9 +1,10 @@
-import Navbar from './components/elements/Navbar';
 import React, { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
+import Navbar from './components/elements/Navbar';
+import SignupForm from './components/forms/SignupForm';
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 
@@ -37,6 +38,7 @@ export default function App() {
     <BrowserRouter >
       <div className="App">
         <Navbar visible={navVisible} show={showNavbar} />
+        <Header />
         <Routes>
           <Route path="/connectmates" element={<Navigate to="/" />} />
           <Route path='/xpagename' element={

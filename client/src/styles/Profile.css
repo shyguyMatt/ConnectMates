@@ -1,8 +1,108 @@
 .userHome {
     margin: 30px;
-
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-top: 80px;
 }
 
-h1 {
-    margin-left: 50px;
+h4{
+    display: flex;
+    justify-content: center;
+}
+
+ul{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addButtons{
+    background-color: darkslategrey;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0,3s ease;
+    animation: changeColor 1.9s infinite alternate;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+@keyframes changeColor {
+    0%{
+        background-color: darkgrey;
+    }
+    25%{
+        background-color: gray;
+    }
+    50%{
+        background-color: darkgray;
+    }
+    75%{
+        background-color: gray;
+    }
+    100% {
+        background-color: darkgrey;
+    }
+}
+
+.asideBar {
+    flex: 1;
+    background-image: url(./../assets/images/paper-1158445.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: fit-content;
+    padding: 20px;
+    overflow: hidden;
+    font-size: 1rem;
+    
+}
+
+.main{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.section1{
+    padding: 20px;
+    border-radius: 4px;
+    background-image: url(./../assets/images/paper-1158445.jpg);
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.section2{
+    flex: 1;
+    padding: 20px;
+    border-radius: 4px;
+    background-image: url(./../assets/images/paper-1158445.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: fit-content;
+    padding: 20px;
+    font-size: 1rem;
+    
+}
+
+@media (max-width: 768px){
+    .userHome{
+        flex-direction: column;
+    }
+
+    .asideBar, .main{
+        flex: initial;
+        width: 100%;
+    }
 }

@@ -59,9 +59,9 @@ function Navbar({ visible, show }) {
                 </div>
 
                 <div className="links">
-                    <NavLink to="/about" className="nav-link">
+                    <NavLink to="/Profile" className="nav-link">
                         <FaHome size={ICON_SIZE} />
-                        <span className="font">Home</span>
+                        <span className="font">Profile</span>
                     </NavLink>
                     <NavLink to="" className="nav-link">
                         <FaGithubAlt size={ICON_SIZE} />

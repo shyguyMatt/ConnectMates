@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const Interest = require('./Interest');
 
 const userSchema = new Schema({
-    username: {
+    name: {
         type: String,
         required: true,
         trim: true
@@ -20,7 +20,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 5
     },
-    interests: [Interest.schema]
+    // interests: [Interest.schema]
 
 });
 

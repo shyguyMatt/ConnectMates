@@ -12,7 +12,7 @@ const interestSchema = new Schema({
         type: String,
         required: true
     },
-    interestedUsers: [User.schema]
+    // interestedUsers: [User.schema]
 });
 
 const Interest = mongoose.model('Interest', interestSchema);

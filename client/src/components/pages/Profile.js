@@ -6,29 +6,29 @@ import './../../styles/Profile.css';
 export default function Profile() {
     return (
     <div className='userHome' >
-        <section>
-         <h1>user name </h1>
-            <section className='bio'>
-             <div  className="max-w-md mx-auto bg-white rounded p-4 shadow-md">
-              <img src="" alt="User Profile"   className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden"/>
-              <button> Add Profile Picture  </button>
-             </div>
-             <div>
-              <p> user bio </p>
-              <button> ADD BIO </button>
-             </div>
-            </section>
-        </section>
-        <aside>
-         <h3>Selected Code Languages </h3>
+        <aside className='asideBar'>
+         <h4>Selected Code Languages </h4>
           <ul>
              <li>Visual test</li>
              <li>Visual test</li>
           </ul>
-         <button> Add New Languages </button>
+         <button className='addButtons'>+</button>
         </aside>
-        <section>
-            <h3>Completed Projects </h3>
+        <section className='main'>
+         <h1>user name </h1>
+            <section className='section1'>
+             <div  className="bio">
+              <img src="" alt="User Profile"   className=""/>
+              <button className='addButtons'>+</button>
+             </div>
+             <div>
+              <p> user bio </p>
+              <button className='addButtons'>+</button>
+             </div>
+            </section>
+        </section>
+        <section className='section2'>
+            <h4>Completed Projects </h4>
             <ul>
                 <li>Visual test 1"</li>
                 <li>Visual test 2</li>

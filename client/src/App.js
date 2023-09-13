@@ -60,7 +60,6 @@ export default function App() {
                 <Footer />
               </div>
             } />
-            <Route path='/profile' element={<Profile />} />
           </Routes>
 
         </div>

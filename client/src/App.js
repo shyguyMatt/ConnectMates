@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Auth from './utils/auth';
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
 import SearchBar from './components/elements/SearchBar';
-import Home from './components/Pages/Home';
-import Profile from './components/Pages/Profile';
+import Home from './components/pages/Home';
+import Profile from './components/pages/Profile';
 import Navbar from './components/elements/Navbar';
 
 export default function App() {
@@ -43,6 +44,9 @@ export default function App() {
     cache: new InMemoryCache(),
   });
 
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  console.log(Auth.getProfile(token).data);
+
   return (
     <ApolloProvider client={client}>
       <BrowserRouter >
@@ -56,7 +60,6 @@ export default function App() {
                 <Footer />
               </div>
             } />
-            <Route path='/signup' element={<SignupForm />} />
           </Routes>
 
         </div>

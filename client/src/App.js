@@ -7,7 +7,6 @@ import Navbar from './components/elements/Navbar';
 // import SignupForm from './components/forms/SignupForm';
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
-// import SignupForm from './components/forms/SignupForm';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('Home');

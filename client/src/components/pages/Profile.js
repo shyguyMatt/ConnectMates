@@ -12,7 +12,7 @@ export default function Profile() {
     const userId = token.data._id;
 
     const { loading, data } = useQuery(QUERY_SINGLE_USER, {
-        variables: {userId: token.data._id}
+        variables: {userId: userId}
     })
 
     const [addInterest, { error }] = useMutation(ADD_INTEREST);
@@ -45,6 +45,7 @@ export default function Profile() {
         return <div>Loading...</div>
     }
 
+    console.log(user)
     return (
     <div className='userHome' >
         <section>
@@ -63,10 +64,10 @@ export default function Profile() {
         <aside>
          <h3>Interests</h3>
           <ul>
-           {/* {user.interests.map((interest) => (
+           {user.interests.map((interest) => (
                 <li>{interest}</li>
             ))}
-           */}
+          
             </ul>
          <button onClick={handleAddInterest}> Add New Interests </button>
          <input

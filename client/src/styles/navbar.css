@@ -36,7 +36,7 @@ nav {
     border: none;
     font-size: 1rem;
     padding: 5px 10px;
-    cursor: pointer;
+    cursor: url(../assets/images/cursor.png), auto;
     color: #fff;
 }
 
@@ -50,6 +50,7 @@ nav {
 .logo img {
     width: 300px;
     height: 200px;
+    cursor: url(../assets/images/cursor.png), auto;
 }
 
 .nav-link {
@@ -65,6 +66,7 @@ nav {
 .nav-link:hover {
     background-color: #da8080;
     color: #4f0b0b;
+    cursor: url(../assets/images/cursor.png), auto;
 }
 
 .nav-link span {

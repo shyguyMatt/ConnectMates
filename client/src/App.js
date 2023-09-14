@@ -62,7 +62,7 @@ export default function App() {
           <Header />
           <SearchBar />
           <Routes>
-            <Route path="/connectmates" element={<Navigate to="/" />} />
+            <Route path="/connectmates" element={<Navigate to="/home" />} />
             <Route path='/xpagename' element={
               <div className={!navVisible ? "page" : "page page-with-navbar"}>
                 <Footer />

@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(../assets/images/floor.png);
+  /* background-image: url(../assets/images/floor.png); */
   cursor: url(../assets/images/cursor.png), auto;
   height: 100%;
   width: 100%;

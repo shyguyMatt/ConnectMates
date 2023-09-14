@@ -62,6 +62,7 @@ export default function App() {
                 <Footer />
               </div>
             } />
+            <Route path='/profile' element={<Profile />} />
             <Route path='/search' element={<Search />} />
           </Routes>
 

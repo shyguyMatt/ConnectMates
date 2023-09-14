@@ -6,7 +6,7 @@ type User {
     name: String!
     email: String!
     password: String!
-    interests: [Interest]
+    interests: [String]
 }
 
 type Auth {
@@ -18,12 +18,6 @@ type Group {
     admin: User
     users: [User]
     groupSize: Int
-}
-
-type Interest {
-    name: String
-    description: String
-    interestedUsers: [User]
 }
 
 type Query {

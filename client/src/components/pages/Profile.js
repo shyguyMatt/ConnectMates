@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Auth from './../../utils/auth';
+import Auth from '../../utils/auth';
 import './../../styles/Profile.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_SINGLE_USER } from '../../utils/queries';
@@ -50,8 +50,8 @@ export default function Profile() {
         <section>
          <h1>{user.name}</h1>
             <section className='bio'>
-             <div  className="max-w-md mx-auto bg-white rounded p-4 shadow-md">
-              <img src="" alt="User Profile"   className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden"/>
+             <div  className="">
+              <img src="" alt="User Profile"   className=""/>
               <button> Add Profile Picture </button>
              </div>
              <div>
@@ -63,10 +63,11 @@ export default function Profile() {
         <aside>
          <h3>Interests</h3>
           <ul>
-            {user.interests.map((interest) => (
+           {/* {user.interests.map((interest) => (
                 <li>{interest}</li>
             ))}
-          </ul>
+           */}
+            </ul>
          <button onClick={handleAddInterest}> Add New Interests </button>
          <input
             className=''
@@ -75,12 +76,12 @@ export default function Profile() {
             value={interestValue}
             type='text'
             onChange={handleChange}
-        />
+            />
         </aside>
         <section>
             <h3>Completed Projects </h3>
             <ul>
-                <li>Visual test 1"</li>
+                <li>Visual test 1</li>
                 <li>Visual test 2</li>
                 <li>Visual test 3</li>
             </ul>

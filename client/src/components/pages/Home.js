@@ -1,9 +1,22 @@
 import React from 'react';
+import LoginForm from '../forms/LoginForm';
+import SignupForm from '../forms/SignupForm';
+import './../../styles/home.css';
+
+
 
 export default function Home() {
   return(
-    <div className='home'>
-      <p>This is the home page</p>
+    <div className='homeContainer'>
+      <h1> </h1>
+      <div>
+        <h2>Login</h2>
+      <LoginForm />
+      </div>
+      <div>
+        <h2>Sign Up</h2>
+      <SignupForm />
+      </div>
     </div>
   )
 }

@@ -33,3 +33,13 @@ export const LOGIN_USER = gql`
       }
     }
     `;
+
+export const REMOVE_INTEREST = gql`
+mutation removeSkill($interest: String!) {
+  removeInterest(interest: $interest) {
+    _id
+    name
+    interest
+  }
+}
+`;

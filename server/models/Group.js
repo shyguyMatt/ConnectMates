@@ -20,7 +20,7 @@ const groupSchema = new Schema({
         min: 2,
         default: 0
     },
-    interests: [interestSchema]
+    interests: [String]
 });
 
 const Group = model('Group',groupSchema);

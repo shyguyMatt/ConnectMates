@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const bcrypt = require('bcrypt');
+const interestSchema = require('./Interest');
 
 const groupSchema = new Schema({
     admin: {

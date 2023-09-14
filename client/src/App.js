@@ -46,7 +46,12 @@ export default function App() {
   });
 
   const token = Auth.loggedIn() ? Auth.getToken() : null;
-  console.log(Auth.getProfile(token).data);
+  const checkedLoggedIn = () => {
+    if (Auth.loggedIn()) {
+      return <Profile />
+    }
+    return <Home />
+  }
 
   return (
     <ApolloProvider client={client}>
@@ -64,7 +69,7 @@ export default function App() {
               </div>
             } />
             <Route path='/home' element={<Home />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile' element={checkedLoggedIn()} />
             <Route path='/search' element={<Search />} />
           </Routes>
 

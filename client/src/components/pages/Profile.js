@@ -1,31 +1,81 @@
-import React from 'react';
-// import Auth from '';
+import React, { useState } from 'react';
+import Auth from './../../utils/auth';
 import './../../styles/Profile.css';
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_SINGLE_USER } from '../../utils/queries';
+import { ADD_INTEREST } from '../../utils/mutations';
 
 
 export default function Profile() {
+
+    const token = Auth.loggedIn() ? Auth.getProfile(Auth.getToken()) : null;
+    const userId = token.data._id;
+
+    const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+        variables: {userId: token.data._id}
+    })
+
+    const [addInterest, { error }] = useMutation(ADD_INTEREST);
+
+    const user = data?.user || {};
+
+    const [interestValue, setInterestValue] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setInterestValue(value)
+    }
+
+    const handleAddInterest = async () => {
+        if(!interestValue) return;
+
+        try {
+            const data = await addInterest({
+                variables: { userId: userId, interest: interestValue }
+            })
+
+            setInterestValue('');
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
     return (
     <div className='userHome' >
         <section>
-         <h1>user name </h1>
+         <h1>{user.name}</h1>
             <section className='bio'>
              <div  className="max-w-md mx-auto bg-white rounded p-4 shadow-md">
               <img src="" alt="User Profile"   className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden"/>
-              <button> Add Profile Picture  </button>
+              <button> Add Profile Picture </button>
              </div>
              <div>
-              <p> user bio </p>
+              <p> {user.name}'s bio </p>
               <button> ADD BIO </button>
              </div>
             </section>
         </section>
         <aside>
-         <h3>Selected Code Languages </h3>
+         <h3>Interests</h3>
           <ul>
-             <li>Visual test</li>
-             <li>Visual test</li>
+            {user.interests.map((interest) => (
+                <li>{interest}</li>
+            ))}
           </ul>
-         <button> Add New Languages </button>
+         <button onClick={handleAddInterest}> Add New Interests </button>
+         <input
+            className=''
+            name='interest'
+            placeholder='New Interest'
+            value={interestValue}
+            type='text'
+            onChange={handleChange}
+        />
         </aside>
         <section>
             <h3>Completed Projects </h3>

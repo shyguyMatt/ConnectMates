@@ -48,20 +48,20 @@ export default function Profile() {
     console.log(user)
     return (
     <div className='userHome' >
-        <section>
+        <section className='section1'>
          <h1>{user.name}</h1>
-            <section className='bio'>
+            <section className='main'>
              <div  className="">
               <img src="" alt="User Profile"   className=""/>
-              <button> Add Profile Picture </button>
+              <button className='picButton'>+</button>
              </div>
              <div>
               <p> {user.name}'s bio </p>
-              <button> ADD BIO </button>
+              <button className='bioButton'>+</button>
              </div>
             </section>
         </section>
-        <aside>
+        <aside className='asideBar'>
          <h3>Interests</h3>
           <ul>
            {user.interests.map((interest) => (
@@ -69,7 +69,7 @@ export default function Profile() {
             ))}
           
             </ul>
-         <button onClick={handleAddInterest}> Add New Interests </button>
+         <button className='interestButton' onClick={handleAddInterest}> Add New Interests </button>
          <input
             className=''
             name='interest'
@@ -79,7 +79,7 @@ export default function Profile() {
             onChange={handleChange}
             />
         </aside>
-        <section>
+        <section className='section2'>
             <h3>Completed Projects </h3>
             <ul>
                 <li>Visual test 1</li>

@@ -9,7 +9,7 @@
     background-image: url(./../assets/images/floor.png);
 }
 
-h4{
+h3{
     display: flex;
     justify-content: center;
 }
@@ -22,7 +22,7 @@ ul{
     justify-content: center;
 }
 
-.addButtons{
+.picButton,.bioButton,.interestButton{
     background-color: darkslategrey;
     color: #fff;
     width: 25px;

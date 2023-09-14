@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import Home from './../pages/Home';
+import Login from './../forms/LoginForm';
+import Signup from './../forms/SignupForm';
 
-import '../../styles/modal.css';
+import '../../styles/modal.css'
 
 export default function Modal({ modal, handleModalClose }) {
   console.log(modal)
   const renderContent = () => {
-    if (modal === 'Home') {
-      return <Home />;
+    if (modal === 'Login') {
+      return <Login />;
+    }
+    if (modal === 'Signup') {
+      return <Signup />;
     }
     return;
   }
 
-  return (
+  return(
     <div className='modal'>
       <div className='content'>
         <button className='close'

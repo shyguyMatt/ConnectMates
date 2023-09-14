@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../../utils/mutations';
+import { LOGIN_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth'
 
 export default function LoginForm() {
   
 const [formState, setFormState] = useState({email: '', password: ''});
-// const [login, { error, data }] = useMutation(LOGIN_USER);
+const [login, { error, data }] = useMutation(LOGIN_USER);
 
 const handleChange = (event) => {
   const { name, value } = event.target;
@@ -18,19 +18,18 @@ const handleChange = (event) => {
   });
 };
 
-// *MUTATION STILL NEEDS TO BE MADE*
 const handleFormSubmit = async (e) => {
   e.preventDefault();
   
-  // try {
-  //   const { data } =  await login({
-  //     variables: { ...formState },
-  //   });
+  try {
+    const { data } =  await login({
+      variables: { ...formState },
+    });
 
-  //   Auth.login(data.login.token);
-  // } catch (error) {
-  //   console.error(error);
-  // }
+    Auth.login(data.login.token);
+  } catch (error) {
+    console.error(error);
+  }
 
   setFormState({
     email: '',

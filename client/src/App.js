@@ -1,16 +1,16 @@
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import React, { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import Auth from './utils/auth';
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
-import Navbar from './components/elements/Navbar';
 import SearchBar from './components/elements/SearchBar';
-// import Home from './components/pages/Home';
+import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
-// import Search from './components/pages/Search';
-import Auth from './utils/auth';
+import Navbar from './components/elements/Navbar';
+import Search from './components/pages/Search'
 
 export default function App() {
 
@@ -29,7 +29,7 @@ export default function App() {
   const httpLink = createHttpLink({
     uri: 'http://localhost:3001/graphql',
   });
-
+  
   const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem('id_token');
     return {
@@ -38,7 +38,7 @@ export default function App() {
         authorization: token ? `Bearer ${token}` : '',
       },
     };
-  });
+  }); 
 
   const client = new ApolloClient({
     link: authLink.concat(httpLink),
@@ -57,15 +57,15 @@ export default function App() {
           <Header />
           <SearchBar />
           <Routes>
-            <Route path="/connectmates" element={<Navigate to="/" />} />
+            <Route path="/connectmates" element={<Navigate to="/home" />} />
             <Route path='/xpagename' element={
               <div className={!navVisible ? "page" : "page page-with-navbar"}>
                 <Footer />
               </div>
             } />
-            {/* <Route path='/home' element={<Home />} /> */}
+            <Route path='/home' element={<Home />} />
             <Route path='/profile' element={<Profile />} />
-            {/* <Route path='/search' element={<Search />} /> */}
+            <Route path='/search' element={<Search />} />
           </Routes>
 
         </div>

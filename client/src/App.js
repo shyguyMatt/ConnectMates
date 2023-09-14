@@ -10,6 +10,7 @@ import SearchBar from './components/elements/SearchBar';
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 import Navbar from './components/elements/Navbar';
+import Search from './components/pages/Search'
 
 export default function App() {
 
@@ -53,6 +54,7 @@ export default function App() {
         <div className="App">
           {renderModal()}
           <Navbar visible={navVisible} show={showNavbar} />
+          <SearchBar />
           <Routes>
             <Route path="/connectmates" element={<Navigate to="/" />} />
             <Route path='/xpagename' element={
@@ -61,6 +63,7 @@ export default function App() {
               </div>
             } />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/search' element={<Search />} />
           </Routes>
 
         </div>

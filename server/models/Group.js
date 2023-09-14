@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const bcrypt = require('bcrypt');
+const interestSchema = require('./Interest');
 
 const groupSchema = new Schema({
     admin: {
@@ -18,7 +19,8 @@ const groupSchema = new Schema({
         type: Number,
         min: 2,
         default: 0
-    }
+    },
+    interests: [String]
 });
 
 const Group = model('Group',groupSchema);

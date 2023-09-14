@@ -10,7 +10,11 @@ const resolvers = {
             return User.find()
         },
 
-        user: async (parent, { userId }) => {
+        userByInterest: async () => {
+            return User.find({ interest: { $all: [userInterest] } });
+        },
+
+        user: async () => {
             return User.findOne({ _id: userId });
         },
     },

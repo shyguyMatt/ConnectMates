@@ -47,7 +47,6 @@ export default function Profile() {
 
     return (
     <div className='userHome' >
-
         <section>
          <h1>{user.name}</h1>
             <section className='bio'>
@@ -80,7 +79,6 @@ export default function Profile() {
         </aside>
         <section>
             <h3>Completed Projects </h3>
-
             <ul>
                 <li>Visual test 1"</li>
                 <li>Visual test 2</li>

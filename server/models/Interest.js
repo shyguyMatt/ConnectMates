@@ -1,5 +1,6 @@
-const { Schema } = require('mongoose');
 
+const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 const interestSchema = new Schema(
     {
         name: {
@@ -15,5 +16,6 @@ const interestSchema = new Schema(
         id: false,
     }
 );
-
+const Interest = mongoose.model('Interest', interestSchema);
 module.exports = interestSchema;
+module.exports = Interest;

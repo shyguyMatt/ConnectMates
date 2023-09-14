@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Home from './../Pages/Home'
+import Home from './../pages/Home';
 
-import '../../styles/modal.css'
+import '../../styles/modal.css';
 
 export default function Modal({ modal, handleModalClose }) {
   console.log(modal)
@@ -12,7 +12,7 @@ export default function Modal({ modal, handleModalClose }) {
     return;
   }
 
-  return(
+  return (
     <div className='modal'>
       <div className='content'>
         <button className='close'

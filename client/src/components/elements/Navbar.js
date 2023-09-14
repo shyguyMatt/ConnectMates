@@ -59,18 +59,18 @@ function Navbar({ visible, show }) {
                 </div>
 
                 <div className="links">
-                    <NavLink to="/Profile" className="nav-link">
+                    <NavLink to="/Home" className="nav-link">
                         <FaHome size={ICON_SIZE} />
-                        <span className="font">Profile</span>
+                        <span className="font">Home</span>
                     </NavLink>
-                    <NavLink to="" className="nav-link">
+                    <NavLink to="https://github.com/shyguyMatt/ConnectMates" className="nav-link">
                         <FaGithubAlt size={ICON_SIZE} />
                         <span className="font">Github</span>
                     </NavLink>
                     <div>
-                        <NavLink to="/contact" className="nav-link">
+                        <NavLink to="/Profile" className="nav-link">
                             <FaTerminal size={ICON_SIZE} />
-                            <span className="font">Contact</span>
+                            <span className="font">Profile</span>
                         </NavLink>
                     </div>
                 </div>

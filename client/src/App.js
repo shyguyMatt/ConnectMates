@@ -54,6 +54,7 @@ export default function App() {
         <div className="App">
           {renderModal()}
           <Navbar visible={navVisible} show={showNavbar} />
+          <Header />
           <SearchBar />
           <Routes>
             <Route path="/connectmates" element={<Navigate to="/" />} />
@@ -62,6 +63,7 @@ export default function App() {
                 <Footer />
               </div>
             } />
+            <Route path='/home' element={<Home />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/search' element={<Search />} />
           </Routes>

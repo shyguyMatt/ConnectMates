@@ -1,0 +1,21 @@
+.homeContainer{
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 20px;
+    background-image: url(./../assets/images/floor.png);
+}
+
+@media (max-width: 768px) {
+    .homeContainer{
+        width: 100%;
+        padding: 10px;
+    }
+    
+}
+
+h2{
+    color: white;
+}

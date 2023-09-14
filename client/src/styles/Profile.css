@@ -1,9 +1,12 @@
 .userHome {
-    margin: 30px;
+    margin: auto;
     display: flex;
     justify-content: flex-start;
     align-items: stretch;
-    padding-top: 80px;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
+    background-image: url(./../assets/images/floor.png);
 }
 
 h4{

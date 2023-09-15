@@ -60,7 +60,7 @@ export default function App() {
           {renderModal()}
           <Navbar visible={navVisible} show={showNavbar} />
           <Header />
-          <SearchBar />
+          <SearchBar  />
           <Routes>
             <Route path="/connectmates" element={<Navigate to="/home" />} />
             <Route path='/xpagename' element={

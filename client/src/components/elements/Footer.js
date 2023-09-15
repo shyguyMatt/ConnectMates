@@ -26,11 +26,13 @@ export default function Footer() {
         <p><FaWhatsapp size={ICON_SIZE} /> Phone: (000) 867-5309</p>
         <p><FaRegEnvelope size={ICON_SIZE} />Email: ConnectMates@Gmail.com</p>
        </div>
+      <img src={require('./../../assets/images/torch.gif')} alt="Torch"></img>
       <div class="quick-links">
         <h3>Quick Links</h3>
        <p><a href="/Home"><FaHome size={ICON_SIZE} /></a></p>
        <p><a href="/Profile"><FaRegUserCircle size={ICON_SIZE} /></a></p>
       </div>
+      <img src={require('./../../assets/images/torch.gif')} alt="Torch"></img>
       <div class="groupLinks">
         <h3>Connect with Us</h3>
         <ul>

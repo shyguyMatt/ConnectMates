@@ -6,7 +6,13 @@ type User {
     name: String!
     email: String!
     password: String!
-    interests: [String]
+    interests: [Interest]
+}
+
+type Interest {
+    _id: ID!
+    name: String!
+    description: String!
 }
 
 type Auth {

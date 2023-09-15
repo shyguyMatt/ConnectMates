@@ -48,19 +48,6 @@ export default function Profile() {
     console.log(user)
     return (
     <div className='userHome' >
-        <section className='section1'>
-         <h1>{user.name}</h1>
-            <section className='main'>
-             <div  className="">
-              <img src="" alt="User Profile"   className=""/>
-              <button className='picButton'>+</button>
-             </div>
-             <div>
-              <p> {user.name}'s bio </p>
-              <button className='bioButton'>+</button>
-             </div>
-            </section>
-        </section>
         <aside className='asideBar'>
          <h3>Interests</h3>
           <ul>
@@ -69,7 +56,7 @@ export default function Profile() {
             ))}
           
             </ul>
-         <button className='interestButton' onClick={handleAddInterest}> Add New Interests </button>
+         <button className='interestButton' onClick={handleAddInterest}>+</button>
          <input
             className=''
             name='interest'
@@ -79,6 +66,18 @@ export default function Profile() {
             onChange={handleChange}
             />
         </aside>
+        <section className='section1'>
+            <section className='main'>
+             <div>
+              <img src="" alt="User Profile"   className=""/>
+              <button className='picButton'>+</button>
+             </div>
+             <div>
+              <h4> {user.name}'s bio </h4>
+              <button className='bioButton'>+</button>
+             </div>
+            </section>
+        </section>
         <section className='section2'>
             <h3>Completed Projects </h3>
             <ul>

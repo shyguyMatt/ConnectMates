@@ -9,12 +9,12 @@
     background-image: url(./../assets/images/floor.png);
 }
 
-h3{
+.asideBar h3 ,.section2 h3{
     display: flex;
     justify-content: center;
 }
 
-ul{
+.section2 ul{
     text-align: center;
     display: flex;
     flex-direction: column;

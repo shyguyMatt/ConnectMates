@@ -25,11 +25,15 @@ export const LOGIN_USER = gql`
     `;
 
   export const ADD_INTEREST = gql`
-    mutation addInterest($userId: ID!, $interest: String!) {
+    mutation addInterest($userId: ID!, $interest: ID!) {
       addInterest(userId: $userId, interest: $interest) {
         _id
         name
-        interests
+        interests {
+          name
+          _id
+          description
+        }
       }
     }
     `;

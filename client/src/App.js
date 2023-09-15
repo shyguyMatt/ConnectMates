@@ -65,14 +65,14 @@ export default function App() {
             <Route path="/connectmates" element={<Navigate to="/home" />} />
             <Route path='/xpagename' element={
               <div className={!navVisible ? "page" : "page page-with-navbar"}>
-                <Footer />
+                
               </div>
             } />
             <Route path='/home' element={<Home />} />
             <Route path='/profile' element={checkedLoggedIn()} />
             <Route path='/search' element={<Search />} />
           </Routes>
-
+          <Footer />
         </div>
       </BrowserRouter>
     </ApolloProvider>

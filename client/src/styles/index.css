@@ -2,7 +2,7 @@
   cursor: url(../assets/images/cursor.png), auto;
 }
 body {
-
+  background-image: url(../assets/images/hill.jpg);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

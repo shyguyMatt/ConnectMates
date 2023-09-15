@@ -1,0 +1,43 @@
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: .7rem;
+}
+
+.contact-info,
+.quick-links,
+.groupLinks,
+.copyright {
+  flex: 1;
+  text-align: center; 
+}
+
+.contact-info i {
+    margin-right: 5px;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links ul li {
+    margin-bottom: 5px;
+}
+
+.groupLinks ul {
+    list-style: none;
+    padding: 0;
+}
+
+.groupLinks ul li {
+    display: flex;
+    justify-content: center;
+    padding: 1px;
+    margin-right: 12px;
+}
+
+.copyright {
+    font-size: .6rem;
+}

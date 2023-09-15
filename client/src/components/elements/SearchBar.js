@@ -13,7 +13,7 @@ export default function SearchBar() {
     }
 
 return (
-    <section className='searchBarContainer'>
+    <section className='searchBarContainer text-3xl font-bold underline' >
      <input
      type="text"
      placeholder="Search For Users/Projects"

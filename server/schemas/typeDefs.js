@@ -31,13 +31,14 @@ type Query {
   users: [User]!
   userByInterest(interests: [String]!): [User]!
   user(userId: ID!): User
+  interests: [Interest]!
 }
 
 type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    addInterest(userId: ID!, interest: String!): User
+    addInterest(userId: ID!, interest: ID!): User
     removeUser(userId: ID!): User
     removeInterest(userId: ID!, interest: String!): User
 }

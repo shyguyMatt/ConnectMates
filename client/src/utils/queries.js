@@ -23,8 +23,22 @@ export const QUERY_SINGLE_USER = gql`
     user(userId: $userId) {
       _id
       name
-      interests
+      interests {
+        _id
+        name
+      }
     }
   }
   `;
+
+export const QUERY_INTERESTS = gql`
+  query getInterests{
+    interests {
+      name
+      _id
+      description
+    }
+  }
+  `;
+
   

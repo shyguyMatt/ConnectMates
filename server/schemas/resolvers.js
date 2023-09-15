@@ -17,6 +17,10 @@ const resolvers = {
         user: async (parent, { userId }) => {
             return User.findOne({ _id: userId }).populate('interests');
         },
+
+        interests: async () => {
+            return Interest.find()
+        },
     },
 
     Mutation: {
@@ -50,16 +54,13 @@ const resolvers = {
         },
 
         addInterest: async (parent, { userId, interest }) => {
-            return User.findOneAndUpdate(
-                { _id: userId },
-                {
-                    $addToSet: { interests: interest }
-                },
+            return User.findByIdAndUpdate(userId,
+                { $push: { interests: interest } },
                 {
                     new: true,
                     runValidators: true,
                 }
-            );
+            ).populate('interests');
         },
 
         removeUser: async (parent, { userId }) => {

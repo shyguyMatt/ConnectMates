@@ -12,7 +12,6 @@ const resolvers = {
 
         userByInterest: async (parent, { interests }) => {
             return User.find({ interests: { $all: interests} });
-
         },
 
         user: async (parent, { userId }) => {

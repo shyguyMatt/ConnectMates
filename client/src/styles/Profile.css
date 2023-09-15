@@ -60,7 +60,6 @@ ul{
     background-image: url(./../assets/images/paper-1158445.jpg);
     background-size: cover;
     background-position: center center;
-    height: fit-content;
     padding: 20px;
     overflow: hidden;
     font-size: 1rem;
@@ -68,14 +67,15 @@ ul{
 }
 
 .main{
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex: 1;
     padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-around
 }
 
 .section1{
+    flex: 2;
     padding: 20px;
     border-radius: 4px;
     background-image: url(./../assets/images/paper-1158445.jpg);
@@ -83,6 +83,7 @@ ul{
     background-position: center center;
     display: flex;
     flex-direction: row;
+    font-size: 1rem;
 }
 
 
@@ -93,10 +94,9 @@ ul{
     background-image: url(./../assets/images/paper-1158445.jpg);
     background-size: cover;
     background-position: center center;
-    height: fit-content;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
     font-size: 1rem;
-    
 }
 
 @media (max-width: 768px){

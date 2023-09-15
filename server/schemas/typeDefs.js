@@ -23,7 +23,7 @@ type Group {
 type Query {
   hello: String
   users: [User]!
-  userByInterest(userInterest: [String]!): [User]!
+  userByInterest(interests: [String]!): [User]!
   user(userId: ID!): User
 }
 

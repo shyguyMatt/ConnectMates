@@ -1,6 +1,6 @@
 
-const { Schema } = require('mongoose');
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
+
 const interestSchema = new Schema(
     {
         name: {
@@ -12,10 +12,8 @@ const interestSchema = new Schema(
             required: true
         },
     },
-    {
-        id: false,
-    }
 );
-const Interest = mongoose.model('Interest', interestSchema);
-module.exports = interestSchema;
+
+const Interest = model('Interest', interestSchema)
+
 module.exports = Interest;

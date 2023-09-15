@@ -7,15 +7,15 @@ const resolvers = {
         hello: () => 'Hello, GraphQL!',
 
         users: async () => {
-            return User.find()
+            return User.find().populate('interests');
         },
 
         userByInterest: async (parent, { interests }) => {
-            return User.find({ interests: { $all: interests} });
+            return User.find({ interests: { $all: interests} }).populate('interests');
         },
 
         user: async (parent, { userId }) => {
-            return User.findOne({ _id: userId });
+            return User.findOne({ _id: userId }).populate('interests');
         },
     },
 

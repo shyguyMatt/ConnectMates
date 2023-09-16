@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa';
 import './../../styles/footer.css';
 
+
 const ICON_SIZE = 20;
 
 export default function Footer() {

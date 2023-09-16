@@ -9,11 +9,13 @@
     /* background-image: url(./../assets/images/floor.png); */
 }
 
+
 .asideBar h3,
 .section2 h3 {
     display: flex;
     justify-content: center;
 }
+
 
 .section2 ul {
     text-align: center;

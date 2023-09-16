@@ -45,7 +45,7 @@ export default function Profile() {
         }
     }
 
-    if (loadingUser) {
+   if (loadingUser) {
         return <div>Loading...</div>
     }
 

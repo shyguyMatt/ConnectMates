@@ -27,8 +27,6 @@ export default function Profile() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(document.querySelector('#interestSelect').value)
-
         setInterestValue(value)
     }
 

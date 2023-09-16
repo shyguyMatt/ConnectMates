@@ -9,12 +9,15 @@ export const QUERY_USERS = gql`
   }
   `;
 
-export const QUERY_INTEREST = gql`
+export const QUERY_USERS_BY_INTERESTS = gql`
   query userByInterest($userInterest: [String]!) {
     userByInterest(interests: $userInterest) {
       _id
       name
-      interests
+      email
+      interests {
+        name
+      }
     }
   }`
 

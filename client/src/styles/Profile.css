@@ -6,15 +6,16 @@
     width: 100vh;
     height: 100vw;
     padding-top: 20px;
-    background-image: url(./../assets/images/floor.png);
+    /* background-image: url(./../assets/images/floor.png); */
 }
 
-.asideBar h3 ,.section2 h3{
+.asideBar h3,
+.section2 h3 {
     display: flex;
     justify-content: center;
 }
 
-.section2 ul{
+.section2 ul {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -22,7 +23,9 @@
     justify-content: center;
 }
 
-.picButton,.bioButton,.interestButton{
+.picButton,
+.bioButton,
+.interestButton {
     background-color: darkslategrey;
     color: #fff;
     width: 25px;
@@ -30,26 +33,31 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0,3s ease;
+    transition: background-color 0, 3s ease;
     animation: changeColor 1.9s infinite alternate;
-    &:hover{
+
+    &:hover {
         transform: scale(1.1);
     }
 }
 
 @keyframes changeColor {
-    0%{
+    0% {
         background-color: darkgrey;
     }
-    25%{
+
+    25% {
         background-color: gray;
     }
-    50%{
+
+    50% {
         background-color: darkgray;
     }
-    75%{
+
+    75% {
         background-color: gray;
     }
+
     100% {
         background-color: darkgrey;
     }
@@ -63,10 +71,10 @@
     padding: 20px;
     overflow: hidden;
     font-size: 1rem;
-    
+
 }
 
-.main{
+.main {
     flex: 1;
     padding: 20px;
     border-radius: 4px;
@@ -74,7 +82,7 @@
     justify-content: space-around
 }
 
-.section1{
+.section1 {
     flex: 2;
     padding: 20px;
     border-radius: 4px;
@@ -87,7 +95,7 @@
 }
 
 
-.section2{
+.section2 {
     flex: 1;
     padding: 20px;
     border-radius: 4px;
@@ -99,12 +107,13 @@
     font-size: 1rem;
 }
 
-@media (max-width: 768px){
-    .userHome{
+@media (max-width: 768px) {
+    .userHome {
         flex-direction: column;
     }
 
-    .asideBar, .main{
+    .asideBar,
+    .main {
         flex: initial;
         width: 100%;
     }

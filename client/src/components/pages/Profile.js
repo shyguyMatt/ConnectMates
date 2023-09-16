@@ -1,9 +1,9 @@
+import { useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import Auth from '../../utils/auth';
-import './../../styles/Profile.css';
-import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_SINGLE_USER, QUERY_INTERESTS } from '../../utils/queries';
 import { ADD_INTEREST } from '../../utils/mutations';
+import { QUERY_INTERESTS, QUERY_SINGLE_USER } from '../../utils/queries';
+import './../../styles/Profile.css';
 
 
 export default function Profile() {
@@ -12,7 +12,7 @@ export default function Profile() {
     const userId = token.data._id;
 
     const { loading: loadingUser, data: userData } = useQuery(QUERY_SINGLE_USER, {
-        variables: {userId: userId}
+        variables: { userId: userId }
     })
 
     const user = userData?.user || {};
@@ -32,7 +32,7 @@ export default function Profile() {
 
     const handleAddInterest = async () => {
         const selectedInterest = document.querySelector('#interestSelect').value;
-        if(!selectedInterest) return;
+        if (!selectedInterest) return;
 
         try {
             const data = await addInterest({
@@ -55,52 +55,53 @@ export default function Profile() {
 
     // console.log(interests[0].name)
     return (
-    <div className='userHome' >
-        <aside className='asideBar'>
-         <h3>Interests</h3>
-          <ul>
-           {user.interests.map((interest) => (
-            // console.log(interest.name)
-                <li key={interest._id}>{interest.name}</li>
-            ))}
-          
-            </ul>
-         <button className='interestButton' onClick={handleAddInterest}>+</button>
-         <select
-            id='interestSelect'
-            name='interests'
-            onChange={handleChange}>
-            <option value=''>--Select an Option--</option>
-            {interests.map((interest) => {
-                return(
-                <option
-                    value={interest._id}
-                    key={interest._id}
-                >{interest.name}</option>)
-            })}
-         </select>
-        </aside>
-        <section className='section1'>
-            <section className='main'>
-             <div>
-              <img src="" alt="User Profile"   className=""/>
-              <button className='picButton'>+</button>
-             </div>
-             <div>
-              <h4> {user.name}'s bio </h4>
-              <button className='bioButton'>+</button>
-             </div>
+        <div className='userHome' >
+            <aside className='asideBar'>
+                <h3>Interests</h3>
+                <ul>
+                    {user.interests.map((interest) => (
+                        // console.log(interest.name)
+                        <li key={interest._id}>{interest.name}</li>
+                    ))}
+
+                </ul>
+                <button className='interestButton' onClick={handleAddInterest}>+</button>
+                <select
+                    id='interestSelect'
+                    name='interests'
+                    className='flex items-center justify-between p-8 bg-gray-600 shadow-md rounded-full'
+                    onChange={handleChange}>
+                    <option value=''>--Select an Option--</option>
+                    {interests.map((interest) => {
+                        return (
+                            <option
+                                value={interest._id}
+                                key={interest._id}
+                            >{interest.name}</option>)
+                    })}
+                </select>
+            </aside>
+            <section className='section1'>
+                <section className='main'>
+                    <div>
+                        <img src="" alt="User Profile" className="" />
+                        <button className='picButton'>+</button>
+                    </div>
+                    <div>
+                        <h4> {user.name}'s bio </h4>
+                        <button className='bioButton'>+</button>
+                    </div>
+                </section>
             </section>
-        </section>
-        <section className='section2'>
-            <h3>Completed Projects </h3>
-            <ul>
-                <li>Visual test 1</li>
-                <li>Visual test 2</li>
-                <li>Visual test 3</li>
-            </ul>
-        </section>
-    </div>
-  );
+            <section className='section2'>
+                <h3>Completed Projects </h3>
+                <ul>
+                    <li>Visual test 1</li>
+                    <li>Visual test 2</li>
+                    <li>Visual test 3</li>
+                </ul>
+            </section>
+        </div>
+    );
 
 }

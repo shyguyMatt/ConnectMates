@@ -21,7 +21,8 @@ export default function Search() {
       }
     });    
   }
-
+ 
+  //query for retrieving users
   const { loading: loadingUsers, data: userData } = useQuery(QUERY_USERS_BY_INTERESTS, {
     variables: { userInterest: interestIds }
   })

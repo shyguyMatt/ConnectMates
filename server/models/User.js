@@ -2,8 +2,6 @@ const { Schema, model } = require('mongoose');
 
 const bcrypt = require('bcrypt');
 
-const interestSchema = require('./Interest');
-
 const userSchema = new Schema(
     {
         name: {
@@ -21,7 +19,12 @@ const userSchema = new Schema(
             required: true,
             minlength: 5
         },
-        interests: [String]
+        interests: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Interest'
+            }
+        ]
     }
 );
 

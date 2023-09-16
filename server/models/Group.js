@@ -1,8 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-const bcrypt = require('bcrypt');
-const interestSchema = require('./Interest');
-
 const groupSchema = new Schema({
     admin: {
         type: Schema.Types.ObjectId,
@@ -20,7 +17,12 @@ const groupSchema = new Schema({
         min: 2,
         default: 0
     },
-    interests: [String]
+    interests: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Interest'
+        }
+    ]
 });
 
 const Group = model('Group',groupSchema);

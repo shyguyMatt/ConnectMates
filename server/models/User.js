@@ -22,7 +22,7 @@ const userSchema = new Schema(
         interests: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Interest'
+                ref: 'Interest',
             }
         ]
     }

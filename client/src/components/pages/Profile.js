@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Auth from '../../utils/auth';
 import './../../styles/Profile.css';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_SINGLE_USER } from '../../utils/queries';
+import { QUERY_SINGLE_USER, QUERY_INTERESTS } from '../../utils/queries';
 import { ADD_INTEREST } from '../../utils/mutations';
 
 
@@ -11,28 +11,34 @@ export default function Profile() {
     const token = Auth.loggedIn() ? Auth.getProfile(Auth.getToken()) : null;
     const userId = token.data._id;
 
-    const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    const { loading: loadingUser, data: userData } = useQuery(QUERY_SINGLE_USER, {
         variables: {userId: userId}
     })
 
-    const [addInterest, { error }] = useMutation(ADD_INTEREST);
+    const user = userData?.user || {};
 
-    const user = data?.user || {};
+    const { loading: loadingInterests, data: interestData } = useQuery(QUERY_INTERESTS);
+
+    const interests = interestData?.interests || [];
+
+    const [addInterest, { error }] = useMutation(ADD_INTEREST);
 
     const [interestValue, setInterestValue] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        console.log(document.querySelector('#interestSelect').value)
 
         setInterestValue(value)
     }
 
     const handleAddInterest = async () => {
-        if(!interestValue) return;
+        const selectedInterest = document.querySelector('#interestSelect').value;
+        if(!selectedInterest) return;
 
         try {
             const data = await addInterest({
-                variables: { userId: userId, interest: interestValue }
+                variables: { userId: userId, interest: selectedInterest }
             })
 
             setInterestValue('');
@@ -41,30 +47,40 @@ export default function Profile() {
         }
     }
 
-    if (loading) {
+    if (loadingUser) {
         return <div>Loading...</div>
     }
 
-    console.log(user)
+    if (loadingInterests) {
+        return <div>Loading...</div>
+    }
+
+    // console.log(interests[0].name)
     return (
     <div className='userHome' >
         <aside className='asideBar'>
          <h3>Interests</h3>
           <ul>
            {user.interests.map((interest) => (
-                <li>{interest}</li>
+            // console.log(interest.name)
+                <li key={interest._id}>{interest.name}</li>
             ))}
           
             </ul>
          <button className='interestButton' onClick={handleAddInterest}>+</button>
-         <input
-            className=''
-            name='interest'
-            placeholder='New Interest'
-            value={interestValue}
-            type='text'
-            onChange={handleChange}
-            />
+         <select
+            id='interestSelect'
+            name='interests'
+            onChange={handleChange}>
+            <option value=''>--Select an Option--</option>
+            {interests.map((interest) => {
+                return(
+                <option
+                    value={interest._id}
+                    key={interest._id}
+                >{interest.name}</option>)
+            })}
+         </select>
         </aside>
         <section className='section1'>
             <section className='main'>

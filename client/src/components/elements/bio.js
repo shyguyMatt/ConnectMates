@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
+import { useMutation } from '@apollo/client';
+import { CHANGE_BIO } from './../../utils/mutations';
+
 const customStyles = {
   content: {
     top: '50%',
@@ -14,8 +17,11 @@ const customStyles = {
 
 };
 
-function BioSection() {
-  const [bioText, setBioText] = useState('Add Bio');
+function BioSection({user}) {
+
+  const [changeBio, { loading: loadingBio, data: bioData }] = useMutation(CHANGE_BIO);
+
+  const [bioText, setBioText] = useState(user.bio ? user.bio : 'Add Bio');
   const [inputText, setInputText] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -27,11 +33,21 @@ function BioSection() {
     setIsModalOpen(false);
   };
 
-  const handleTextChange = () => {
+  const handleTextChange = async () => {
     if (inputText.trim() !== '') {
-      setBioText(inputText);
-      setInputText('');
-      closeModal();
+
+      try {
+        const data = await changeBio({
+          variables: { userId: user._id, newBio: inputText}
+        })
+
+        setBioText(inputText);
+        setInputText('');
+        closeModal();
+
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 

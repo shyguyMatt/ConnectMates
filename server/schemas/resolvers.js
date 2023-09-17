@@ -74,6 +74,13 @@ const resolvers = {
                 { new: true }
             );
         },
+
+        changeBio: async (parent, { userId, newBio }) => {
+            return User.findOneAndUpdate(
+                { _id: userId },
+                { bio: newBio }
+            )
+        }
     },
 };
 

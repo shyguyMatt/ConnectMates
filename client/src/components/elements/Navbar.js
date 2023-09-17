@@ -10,6 +10,7 @@ import {
     FaTree
 } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
+
 import './../../styles/navbar.css';
 
 const ICON_SIZE = 20;

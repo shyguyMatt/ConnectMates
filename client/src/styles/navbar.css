@@ -1,16 +1,17 @@
 nav {
     position: absolute;
-    top: 0;
+    top: 0px;
     left: 0;
+    bottom: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     width: 25%;
-    min-height: 100vh;
+    height: 100%;
     background-image: url('./../assets/images/navbar-scroll.png');
     background-size: cover;
-    background-position: 60% 400%;
-    padding: 2rem 1rem 1rem 1rem;
+    background-position: 60% 410%;
+    padding: 2rem 1rem 1rem 7rem;
     transition: transform 1s;
     z-index: 1;
 }
@@ -42,8 +43,9 @@ nav {
 
 .logo {
     display: block;
-    width: 100px;
-    margin: 5%;
+    width: 300px;
+    margin-right: 10%;
+    padding-right: 10px;
     background: transparent;
 }
 

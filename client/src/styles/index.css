@@ -1,20 +1,27 @@
-:root{
+:root {
   cursor: url(../assets/images/cursor.png), auto;
 }
+
 body {
-  background-image: url(../assets/images/hill.jpg);
+  /* background-image: url(../assets/images/hill.jpg); */
+  background-image: url(../assets/images/floor.png);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url(../assets/images/floor.png); */
-  cursor: url(../assets/images/cursor.png),cover;
-  height: 100vh;
-  width: 100vw;
+  cursor: url(../assets/images/cursor.png), cover;
+  height: 100%;
+  width: 100%;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+header img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -4,6 +4,7 @@ import Auth from '../../utils/auth';
 import { ADD_INTEREST } from '../../utils/mutations';
 import { QUERY_INTERESTS, QUERY_SINGLE_USER } from '../../utils/queries';
 import './../../styles/Profile.css';
+import BioSection from '../elements/bio';
 
 
 export default function Profile() {
@@ -56,13 +57,27 @@ export default function Profile() {
     // console.log(interests[0].name)
     return (
         <div className='userHome' >
-            <aside className='asideBar'>
-                <h3>Interests</h3>
+            <section className='section1'>
+                <section className='main'>
+                    <div>
+                        <img src="" alt="User Profile" className="" />
+                        <button className='picButton'>+</button>
+                    </div>
+                    <div>
+                        <h4> {user.name}'s bio </h4>
+                       <BioSection />
+                        <button className='bioButton'>+</button>
+                    </div>
+                </section>
+            </section>
+          <div className='sideBar-section2'>
+            <aside className='sideBar'>
+            <h3>Interests</h3>
                 <ul>
-                    {user.interests.map((interest) => (
+                    {/*{user.interests.map((interest) => (
                         // console.log(interest.name)
                         <li key={interest._id}>{interest.name}</li>
-                    ))}
+                    ))}*/}
 
                 </ul>
                 <button className='interestButton' onClick={handleAddInterest}>+</button>
@@ -79,28 +94,17 @@ export default function Profile() {
                                 key={interest._id}
                             >{interest.name}</option>)
                     })}
-                </select>
+                </select>         
             </aside>
-            <section className='section1'>
-                <section className='main'>
-                    <div>
-                        <img src="" alt="User Profile" className="" />
-                        <button className='picButton'>+</button>
-                    </div>
-                    <div>
-                        <h4> {user.name}'s bio </h4>
-                        <button className='bioButton'>+</button>
-                    </div>
-                </section>
-            </section>
             <section className='section2'>
-                <h3>Completed Projects </h3>
+            <h3>Completed Projects </h3>
                 <ul>
                     <li>Visual test 1</li>
                     <li>Visual test 2</li>
                     <li>Visual test 3</li>
                 </ul>
             </section>
+          </div>
         </div>
     );
 

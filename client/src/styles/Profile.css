@@ -1,16 +1,14 @@
 .userHome {
     margin: auto;
     display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    width: 100vh;
+    flex-direction: column;
     height: 100vw;
-    padding-top: 20px;
+    padding: 20px;
     /* background-image: url(./../assets/images/floor.png); */
 }
 
 
-.asideBar h3,
+.sideBar h3,
 .section2 h3 {
     display: flex;
     justify-content: center;
@@ -65,15 +63,22 @@
     }
 }
 
-.asideBar {
-    flex: 1;
+.sideBar-section2{
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+    padding: 5px;
+}
+
+.sideBar {
+    flex-basis: 20%;
+    border-radius: 4px;
     background-image: url(./../assets/images/paper-1158445.jpg);
     background-size: cover;
     background-position: center center;
-    padding: 20px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     font-size: 1rem;
-
 }
 
 .main {
@@ -85,7 +90,7 @@
 }
 
 .section1 {
-    flex: 2;
+    flex: 1;
     padding: 20px;
     border-radius: 4px;
     background-image: url(./../assets/images/paper-1158445.jpg);
@@ -99,13 +104,9 @@
 
 .section2 {
     flex: 1;
-    padding: 20px;
-    border-radius: 4px;
     background-image: url(./../assets/images/paper-1158445.jpg);
     background-size: cover;
     background-position: center center;
-    display: flex;
-    flex-direction: column;
     font-size: 1rem;
 }
 
@@ -114,9 +115,11 @@
         flex-direction: column;
     }
 
-    .asideBar,
-    .main {
-        flex: initial;
-        width: 100%;
+    .sideBar-section2{
+        flex-direction: column;
+    }
+
+    .sideBar{
+        flex-basis: 100%;
     }
 }

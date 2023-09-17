@@ -3,33 +3,41 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
+
+// Import elements
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
 import Modal from './components/elements/Modal';
+import Navbar from './components/elements/Navbar';
 import SearchBar from './components/elements/SearchBar';
+
+// Import pages
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
-import Navbar from './components/elements/Navbar';
 import Search from './components/pages/Search'
 
+
 export default function App() {
+  // Define States
+  const [navVisible, showNavbar] = useState(false);  
+  // const [modal, setModal] = useState('');
 
-  const [modal, setModal] = useState('');
-  const [navVisible, showNavbar] = useState(false);
+  // const handleModalClose = () => setModal('')
 
-  const handleModalClose = () => setModal('')
+  // const renderModal = () => {
+  //   if (modal) {
+  //     return <Modal modal={modal} handleModalClose={handleModalClose} />
+  //   }
+  //   return;
+  // }
 
-  const renderModal = () => {
-    if (modal) {
-      return <Modal modal={modal} handleModalClose={handleModalClose} />
-    }
-    return;
-  }
-
+  // Set link to backend
+  // *NEEDS TO BE FIXED BEFORE PUSH TO HEROKU* //
   const httpLink = createHttpLink({
     uri: 'http://localhost:3001/graphql',
   });
   
+  // Link auth token to localStorage
   const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem('id_token');
     return {
@@ -45,7 +53,7 @@ export default function App() {
     cache: new InMemoryCache(),
   });
 
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  // Checks if logged in returns to home if not
   const checkedLoggedIn = () => {
     if (Auth.loggedIn()) {
       return <Profile />
@@ -57,10 +65,11 @@ export default function App() {
     <ApolloProvider client={client}>
       <BrowserRouter >
         <div className="App">
-          {renderModal()}
+          {/* {renderModal()} */}
           <Navbar visible={navVisible} show={showNavbar} />
           <Header />
           <SearchBar  />
+
           <Routes>
             <Route path="/connectmates" element={<Navigate to="/home" />} />
             <Route path='/xpagename' element={
@@ -72,6 +81,7 @@ export default function App() {
             <Route path='/profile' element={checkedLoggedIn()} />
             <Route path='/search' element={<Search />} />
           </Routes>
+
           <Footer />
         </div>
       </BrowserRouter>

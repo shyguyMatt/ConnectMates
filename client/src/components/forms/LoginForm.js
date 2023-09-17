@@ -5,10 +5,14 @@ import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 
 export default function LoginForm() {
-  
+// Define states to be used
 const [formState, setFormState] = useState({email: '', password: ''});
+
+// define mutations to be used
 const [login, { error, data }] = useMutation(LOGIN_USER);
 
+
+// handles any change in the fields and updates states accordingly
 const handleChange = (event) => {
   const { name, value } = event.target;
 
@@ -18,6 +22,7 @@ const handleChange = (event) => {
   });
 };
 
+// handles the form submit
 const handleFormSubmit = async (e) => {
   e.preventDefault();
   
@@ -27,6 +32,7 @@ const handleFormSubmit = async (e) => {
     });
 
     Auth.login(data.login.token);
+    
   } catch (error) {
     console.error(error);
   }

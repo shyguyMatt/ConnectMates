@@ -7,7 +7,20 @@ class AuthService {
 
   loggedIn() {
     const token = this.getToken();
-    return token ? true : false;
+    if(!token) return false;
+    else if(this.isTokenExpired(token)) return false
+    return true;
+  }
+
+  isTokenExpired(token) {
+    try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
+    }catch (err) {
+      return false;
+    }
   }
 
   getToken() {

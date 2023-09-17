@@ -12,7 +12,8 @@
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-
+    padding-left: 60px;
+    padding-top: 35px;
 }
 
 .contact-info,
@@ -32,10 +33,6 @@
     padding: 0;
 }
 
-.quick-links ul li {
-    margin-bottom: 5px;
-}
-
 .groupLinks ul {
     list-style: none;
     padding: 0;
@@ -51,3 +48,4 @@
 .copyright {
     font-size: .6rem;
 }
+

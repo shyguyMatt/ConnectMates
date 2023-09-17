@@ -1,36 +1,37 @@
-import { useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
-import Auth from '../../utils/auth';
+
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_INTEREST } from '../../utils/mutations';
 import { QUERY_INTERESTS, QUERY_SINGLE_USER } from '../../utils/queries';
+
+import Auth from '../../utils/auth';
+
 import './../../styles/Profile.css';
 import BioSection from '../elements/bio';
 
 
 export default function Profile() {
 
+    // Checks if the user is logged in returns a profile information object
     const token = Auth.loggedIn() ? Auth.getProfile(Auth.getToken()) : null;
     const userId = token.data._id;
 
+    // Defines queries used
     const { loading: loadingUser, data: userData } = useQuery(QUERY_SINGLE_USER, {
         variables: { userId: userId }
     })
-
     const user = userData?.user || {};
 
     const { loading: loadingInterests, data: interestData } = useQuery(QUERY_INTERESTS);
-
     const interests = interestData?.interests || [];
 
+    // Defines mutations used
     const [addInterest, { error }] = useMutation(ADD_INTEREST);
 
+    // Defines states used
     const [interestValue, setInterestValue] = useState('');
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setInterestValue(value)
-    }
-
+    // handles add interest button, sends request to server to update user information
     const handleAddInterest = async () => {
         const selectedInterest = document.querySelector('#interestSelect').value;
         if (!selectedInterest) return;
@@ -41,6 +42,7 @@ export default function Profile() {
             })
 
             setInterestValue('');
+
         } catch (error) {
             console.error(error);
         }
@@ -50,13 +52,10 @@ export default function Profile() {
         return <div>Loading...</div>
     }
 
-    if (loadingInterests) {
-        return <div>Loading...</div>
-    }
 
-    // console.log(interests[0].name)
     return (
         <div className='userHome' >
+
             <section className='section1'>
                 <section className='main'>
                     <div>
@@ -70,22 +69,24 @@ export default function Profile() {
                     </div>
                 </section>
             </section>
+
           <div className='sideBar-section2'>
             <aside className='sideBar'>
             <h3>Interests</h3>
                 <ul>
                     {/*{user.interests.map((interest) => (
-                        // console.log(interest.name)
                         <li key={interest._id}>{interest.name}</li>
                     ))}*/}
-
                 </ul>
+
                 <button className='interestButton' onClick={handleAddInterest}>+</button>
+
+                {/* Dropdown menu to select interests to add */}
                 <select
                     id='interestSelect'
                     name='interests'
                     className='flex items-center justify-between p-8 bg-gray-600 shadow-md rounded-full'
-                    onChange={handleChange}>
+                    >
                     <option value=''>--Select an Option--</option>
                     {interests.map((interest) => {
                         return (
@@ -96,6 +97,7 @@ export default function Profile() {
                     })}
                 </select>         
             </aside>
+
             <section className='section2'>
             <h3>Completed Projects </h3>
                 <ul>

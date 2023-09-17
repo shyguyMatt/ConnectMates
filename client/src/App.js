@@ -53,14 +53,6 @@ export default function App() {
     cache: new InMemoryCache(),
   });
 
-  // Checks if logged in returns to home if not
-  const checkedLoggedIn = () => {
-    if (Auth.loggedIn()) {
-      return <Profile />
-    }
-    return <Home />
-  }
-
   return (
     <ApolloProvider client={client}>
       <BrowserRouter >
@@ -78,7 +70,7 @@ export default function App() {
               </div>
             } />
             <Route path='/home' element={<Home />} />
-            <Route path='/profile' element={checkedLoggedIn()} />
+            <Route path='/profile' element={Auth.loggedIn() ? <Profile /> : <Home />} />
             <Route path='/search' element={<Search />} />
           </Routes>
 

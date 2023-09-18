@@ -26,6 +26,7 @@ export const QUERY_SINGLE_USER = gql`
     user(userId: $userId) {
       _id
       name
+      bio
       interests {
         _id
         name

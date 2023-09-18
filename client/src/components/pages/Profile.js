@@ -64,7 +64,7 @@ export default function Profile() {
                     </div>
                     <div>
                         <h4> {user.name}'s bio </h4>
-                       <BioSection />
+                            <BioSection user={user}/>
                         <button className='bioButton'>+</button>
                     </div>
                 </section>
@@ -74,9 +74,9 @@ export default function Profile() {
             <aside className='sideBar'>
             <h3>Interests</h3>
                 <ul>
-                    {/*{user.interests.map((interest) => (
+                    {user.interests.map((interest) => (
                         <li key={interest._id}>{interest.name}</li>
-                    ))}*/}
+                    ))}
                 </ul>
 
                 <button className='interestButton' onClick={handleAddInterest}>+</button>

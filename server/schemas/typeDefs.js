@@ -7,6 +7,7 @@ type User {
     email: String!
     password: String!
     interests: [Interest]
+    bio: String
 }
 
 type Interest {
@@ -41,6 +42,7 @@ type Mutation {
     addInterest(userId: ID!, interest: ID!): User
     removeUser(userId: ID!): User
     removeInterest(userId: ID!, interest: String!): User
+    changeBio(userId: ID!, newBio: String!): User
 }
 `;
 

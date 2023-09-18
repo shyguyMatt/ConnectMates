@@ -47,3 +47,12 @@ mutation removeSkill($interest: String!) {
   }
 }
 `;
+
+export const CHANGE_BIO = gql`
+mutation changeBio($userId: ID!, $newBio: String!) {
+  changeBio(userId: $userId, newBio: $newBio) {
+    _id
+    name
+    bio
+  }
+}`

@@ -32,6 +32,10 @@ const resolvers = {
 
         findMemberGroups: async (parent, { userId }) => {
             return Group.find({ users: { $in: userId }}).populate('users').populate('admin').populate('interests');
+        },
+
+        findGroupId: async (parent, { groupId }) => {
+            return Group.findOne({ _id: groupId }).populate('interests').populate({path: 'users', populate: {path: 'interests'}}).populate({path: 'admin', populate: {path: 'interests'}});
         }
     },
 

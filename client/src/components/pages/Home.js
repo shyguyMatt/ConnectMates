@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER, QUERY_USERS_GROUPS } from '../../utils/queries';
 import Auth from './../../utils/auth'
@@ -43,6 +44,8 @@ export default function Home() {
         {adminGroups.map((group) => (
           <div key={group._id}>
             <h2>this is am admin group</h2>
+            <NavLink to={`/group?group=${group._id}`}
+            >Go to Group</NavLink>
           </div>
           ))}
       </div>
@@ -52,6 +55,8 @@ export default function Home() {
         {memberGroups.map((group) => {
           <div key={group._id}>
             <h2>this is a member group</h2>
+            <NavLink to={`/group?group=${group._id}`}
+            >Go to Group</NavLink>
           </div>
         })}
       </div>

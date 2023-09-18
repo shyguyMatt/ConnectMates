@@ -24,7 +24,7 @@ type Auth {
 type Group {
     _id: ID
     name: String
-    admin: User
+    admin: [User]
     users: [User]
     groupSize: Int
     interests: [Interest]
@@ -39,6 +39,7 @@ type Query {
   interests: [Interest]!
   findAdminGroups(userId: ID!): [Group]
   findMemberGroups(userId: ID!): [Group]
+  findGroupId(groupId: ID!): Group!
 }
 
 type Mutation {

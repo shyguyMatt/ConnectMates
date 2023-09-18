@@ -45,4 +45,24 @@ export const QUERY_INTERESTS = gql`
   }
   `;
 
+export const QUERY_USERS_GROUPS = gql`
+  query findGroups($userId: ID!) {
+    findAdminGroups(userId: $userId) {
+      _id
+      name
+      interests {
+        _id
+        name
+      }
+    }
+    findMemberGroups(userId: $userId) {
+      _id
+      name
+      interests {
+        _id
+        name
+      }
+    }
+  }`
+
   

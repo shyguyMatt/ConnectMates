@@ -55,4 +55,25 @@ mutation changeBio($userId: ID!, $newBio: String!) {
     name
     bio
   }
+}
+`;
+
+export const CREATE_GROUP = gql`
+mutation createGroup($userId: ID!, $groupName: String!, $interests: [ID]!) {
+  createGroup(userId: $userId, groupName: $groupName, interests: $interests) {
+    _id
+    name
+    interests {
+      _id
+      name
+    }
+    admin {
+      _id
+      name
+    }
+    users {
+      _id
+      name
+    }
+  }
 }`

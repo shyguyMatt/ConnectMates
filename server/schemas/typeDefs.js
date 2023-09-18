@@ -22,9 +22,12 @@ type Auth {
 }
 
 type Group {
+    _id: ID
+    name: String
     admin: User
     users: [User]
     groupSize: Int
+    interests: [Interest]
 }
 
 type Query {
@@ -33,11 +36,15 @@ type Query {
   userByInterest(interests: [String]!): [User]!
   user(userId: ID!): User
   interests: [Interest]!
+  findAdminGroups(userId: ID!): [Group]
+  findMemberGroups(userId: ID!): [Group]
 }
 
 type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+
+    createGroup(userId: ID!, groupName: String!, interests: [ID]!): Group
 
     addInterest(userId: ID!, interest: ID!): User
     removeUser(userId: ID!): User

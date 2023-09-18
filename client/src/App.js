@@ -36,7 +36,7 @@ export default function App() {
   // Set link to backend
   // *NEEDS TO BE FIXED BEFORE PUSH TO HEROKU* //
   const httpLink = createHttpLink({
-    uri: 'http://localhost:3001/graphql',
+    uri: '/graphql',
   });
   
   // Link auth token to localStorage

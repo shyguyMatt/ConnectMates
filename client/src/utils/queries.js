@@ -70,6 +70,36 @@ export const QUERY_USERS_GROUPS = gql`
         name
       }
     }
-  }`
+  }
+  `;
 
+export const QUERY_GROUP_ID = gql`
+  query findGroupId($groupId: ID!) {
+    findGroupId(groupId: $groupId) {
+      _id
+      name
+      interests {
+        _id
+        name
+        description
+      }
+      users {
+        _id
+        name
+        interests {
+          _id
+          name
+        }
+      }
+      admin {
+        _id
+        name
+        interests {
+          _id
+          name
+        }
+      }
+    }
+  }
+  `;
   

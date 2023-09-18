@@ -14,6 +14,10 @@ const resolvers = {
             return User.find({ interests: { $all: interests} }).populate('interests');
         },
 
+        groupByInterest: async (parent, { interests }) => {
+            return Group.find({ interests: { $all : interests} }).populate('interests')
+        },
+
         user: async (parent, { userId }) => {
             return User.findOne({ _id: userId }).populate('interests');
         },

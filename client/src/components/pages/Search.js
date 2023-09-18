@@ -34,6 +34,7 @@ export default function Search() {
     variables: { userInterest: interestIds }
   })
   const users = userData?.userByInterest || [];
+  const groups = userData?.groupByInterest || [];
 
   if(loadingUsers) {
     return(
@@ -43,22 +44,41 @@ export default function Search() {
 
   return(
     <div>
-      {/* For each returned user return element containing user info */}
-      {users.map((user) => {
-        return(
-          <div className='card border-solid border-2 border-sky-500' key={user._id}>
-            <h3>{user.name}</h3>
-            <h4>{user.email}</h4>
-            <ul>
-              {user.interests.map((interest) => {
-                return(
-                  <li>{interest.name}</li>
-                )
-              })}
-            </ul>
-          </div>
-        )
-      })}
+      <div className='users'>
+        {/* For each returned user return element containing user info */}
+        {users.map((user) => {
+          return(
+            <div className='card border-solid border-2 border-sky-500' key={user._id}>
+              <h3>{user.name}</h3>
+              <h4>{user.email}</h4>
+              <ul>
+                {user.interests.map((interest) => {
+                  return(
+                    <li key={interest._id}>{interest.name}</li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        })}        
+      </div>
+
+      <div className='groups'>
+        {groups.map((group) => {
+          return(
+            <div className='card border-solid border-2 border-red-500' key={group._id}>
+              <h3>{group.name}</h3>
+              <ul>
+                {group.interests.map((interest) => {
+                  return(
+                    <li key={interest._id}>{interest.name}</li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

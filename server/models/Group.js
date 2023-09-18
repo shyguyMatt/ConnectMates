@@ -1,11 +1,16 @@
 const { Schema, model } = require('mongoose');
 
 const groupSchema = new Schema({
-    admin: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+    name: {
+        type: String,
         required: true
     },
+    admin: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        }
+    ],
     users: [
         {
             type: Schema.Types.ObjectId,
@@ -14,7 +19,6 @@ const groupSchema = new Schema({
     ],
     groupsize: {
         type: Number,
-        min: 2,
         default: 0
     },
     interests: [

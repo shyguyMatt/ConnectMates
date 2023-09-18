@@ -21,6 +21,14 @@ const resolvers = {
         interests: async () => {
             return Interest.find()
         },
+
+        findAdminGroups: async (parent, { userId }) => {
+            return Group.find({ admin: { $in: userId }}).populate('users').populate('admin').populate('interests');
+        },
+
+        findMemberGroups: async (parent, { userId }) => {
+            return Group.find({ users: { $in: userId }}).populate('users').populate('admin').populate('interests');
+        }
     },
 
     Mutation: {
@@ -80,6 +88,14 @@ const resolvers = {
                 { _id: userId },
                 { bio: newBio }
             )
+        },
+
+        createGroup: async (parent, {userId, groupName, interests}) => {
+            return Group.create({
+                name: groupName,
+                admin: userId,
+                interests: interests,
+        })
         }
     },
 };

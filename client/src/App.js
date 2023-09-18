@@ -15,6 +15,7 @@ import SearchBar from './components/elements/SearchBar';
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 import Search from './components/pages/Search'
+import LoginSignUp from './components/pages/Login';
 
 
 export default function App() {
@@ -70,7 +71,8 @@ export default function App() {
               </div>
             } />
             <Route path='/home' element={<Home />} />
-            <Route path='/profile' element={Auth.loggedIn() ? <Profile /> : <Home />} />
+            <Route path='/login' element={<LoginSignUp />} />
+            <Route path='/profile' element={Auth.loggedIn() ? <Profile /> : <LoginSignUp />} />
             <Route path='/search' element={<Search />} />
           </Routes>
 

@@ -26,7 +26,8 @@ const groupSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Interest'
         }
-    ]
+    ],
+    requests: [String]
 });
 
 const Group = model('Group',groupSchema);

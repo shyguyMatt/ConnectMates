@@ -28,6 +28,7 @@ type Group {
     users: [User]
     groupSize: Int
     interests: [Interest]
+    requests: [String]
 }
 
 type Query {
@@ -47,6 +48,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
 
     createGroup(userId: ID!, groupName: String!, interests: [ID]!): Group
+    requestJoin(userId: ID!, groupId: ID!): Group
 
     addInterest(userId: ID!, interest: ID!): User
     removeUser(userId: ID!): User

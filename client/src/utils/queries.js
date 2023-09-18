@@ -19,6 +19,13 @@ export const QUERY_USERS_BY_INTERESTS = gql`
         name
       }
     }
+    groupByInterest(interests: $userInterest) {
+      _id
+      name
+      interests {
+        name
+      }
+    }
   }`
 
 export const QUERY_SINGLE_USER = gql`

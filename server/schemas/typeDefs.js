@@ -34,6 +34,7 @@ type Query {
   hello: String
   users: [User]!
   userByInterest(interests: [String]!): [User]!
+  groupByInterest(interests: [String]!): [Group]!
   user(userId: ID!): User
   interests: [Interest]!
   findAdminGroups(userId: ID!): [Group]

@@ -39,13 +39,14 @@ export const ADD_INTEREST = gql`
     `;
 
 export const REMOVE_INTEREST = gql`
-mutation removeInterest($interest: String!) {
-  removeInterest(interest: $interest) {
-    _id
-    name
-    interest
+  mutation removeInterest($userId: ID!, $interest: String!) {
+    removeInterest(userId: $userId, interest: $interest) {
+      _id
+      interests {
+          _id
+        }
+    }
   }
-}
 `;
 
 export const CHANGE_BIO = gql`

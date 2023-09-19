@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-
 import { useMutation, useQuery } from "@apollo/client";
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
 import Avatar from 'react-avatar';
 import Auth from "../../utils/auth";
 import { ADD_INTEREST, REMOVE_INTEREST } from "../../utils/mutations";
@@ -11,53 +10,54 @@ import BioSection from "../elements/bio";
 import "./../../styles/Profile.css";
 
 export default function Profile() {
+
   // Checks if the user is logged in returns a profile information object
   const token = Auth.loggedIn() ? Auth.getProfile(Auth.getToken()) : null;
   const userId = token.data._id;
 
   // Defines queries used
   const { loading: loadingUser, data: userData } = useQuery(QUERY_SINGLE_USER, {
-    variables: { userId: userId },
-  });
+    variables: { userId: userId }
+  })
   const user = userData?.user || {};
 
   const { loading: loadingInterests, data: interestData } = useQuery(QUERY_INTERESTS);
   const interests = interestData?.interests || [];
-
   // Defines mutations used
   const [addInterest, { error }] = useMutation(ADD_INTEREST);
-
-  const [removeInterest] = useMutation(REMOVE_INTEREST);
+  const [removeInterest, { data }] = useMutation(REMOVE_INTEREST);
 
   // Defines states used
-  const [interestValue, setInterestValue] = useState("");
+  const [interestValue, setInterestValue] = useState('');
 
   // handles add interest button, sends request to server to update user information
   const handleAddInterest = async () => {
-    try {
-      const selectedInterest = document.querySelector("#interestSelect").value;
-      if (!selectedInterest) return;
+    const selectedInterest = document.querySelector('#interestSelect').value;
+    if (!selectedInterest) return;
 
+    try {
       const data = await addInterest({
-        variables: { userId: userId, interest: selectedInterest },
-      });
-      console.log(data);
-      setInterestValue("");
+        variables: { userId: userId, interest: selectedInterest }
+      })
+
+      setInterestValue('');
+
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
-  const handleRemoveInterest = async (interestId) => {
+  const handleRemoveInterest = async () => {
+    const selectedInterest = document.querySelector("#interestSelect").value;
+    if (!selectedInterest) return;
+
     try {
-      const selectedInterest = document.querySelector("#interestSelect").value;
       const data = await removeInterest({
         variables: { userId: userId, interest: selectedInterest },
       });
-      setInterestValue((selectedInterest) =>
-        selectedInterest.filter((interest) => interest._id !== interestId)
-      );
-      console.log(data);
+
+      // Handle the response data if needed
+
     } catch (error) {
       console.error(error);
     }
@@ -66,6 +66,7 @@ export default function Profile() {
   if (loadingUser) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <div className="bg-[#838383c6] text-white p-10 m-16 flex flex-col justify-center items-center rounded-xl shadow-2xl space-y-10">
@@ -117,8 +118,8 @@ export default function Profile() {
             Add interest
           </button>
           <button className="text-center text-sm w-20 h-10 bg-gradient-to-tr from-red-900 via-red-950 to-black text-white font-bold shadow-md hover:scale-105 rounded-xl"
-            onClick={() => handleRemoveInterest('exampleInterest')}>
-            Remove Interest
+            onClick={handleRemoveInterest}>
+            Remove interest
           </button>
         </aside>
 

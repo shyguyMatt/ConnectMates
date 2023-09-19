@@ -78,11 +78,7 @@ const resolvers = {
                 }
             ).populate('interests');
         },
-
-        removeUser: async (parent, { userId }) => {
-            return User.findOneAndDelete({ _id: userId });
-        },
-
+        
         removeInterest: async (parent, { userId, interest }) => {
             return User.findOneAndUpdate(
                 { _id: userId },

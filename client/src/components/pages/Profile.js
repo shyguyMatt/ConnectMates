@@ -8,6 +8,9 @@ import Auth from '../../utils/auth';
 
 import './../../styles/Profile.css';
 import BioSection from '../elements/bio';
+import Avatar from 'react-avatar';
+
+
 
 
 export default function Profile() {
@@ -55,11 +58,12 @@ export default function Profile() {
 
     return (
         <div className='userHome' >
-
             <section className='section1'>
                 <section className='main'>
                     <div>
-                        <img src="" alt="User Profile" className="" />
+                        <Avatar
+                        name={user.name}
+                        />
                         <button className='picButton'>+</button>
                     </div>
                     <div>
@@ -74,9 +78,9 @@ export default function Profile() {
             <aside className='sideBar'>
             <h3>Interests</h3>
                 <ul>
-                    {user.interests.map((interest) => (
+                   {/* {user.interests.map((interest) => (
                         <li key={interest._id}>{interest.name}</li>
-                    ))}
+                    ))} */}
                 </ul>
 
                 <button className='interestButton' onClick={handleAddInterest}>+</button>

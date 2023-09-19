@@ -12,7 +12,8 @@
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-
+    padding-left: 60px;
+    padding-top: 35px;
 }
 
 .contact-info,
@@ -51,3 +52,4 @@ svg {
 .copyright {
     font-size: .6rem;
 }
+

@@ -5,13 +5,18 @@ import { ADD_USER } from '../../utils/mutations';
 import Auth from './../../utils/auth'
 
 export default function SignupForm() {
+
+  // Define states to be used
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     password: '',
   });
+
+  // Define mutations to be used
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
+  // handles change in any of the fields
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -21,6 +26,7 @@ export default function SignupForm() {
     });
   };
 
+  // handles the form submit
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     

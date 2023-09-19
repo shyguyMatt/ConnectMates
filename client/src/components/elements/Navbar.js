@@ -9,7 +9,9 @@ import {
     FaTerminal,
     FaTree
 } from 'react-icons/fa';
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
+import Auth from './../../utils/auth'
+
 import './../../styles/navbar.css';
 
 const ICON_SIZE = 20;

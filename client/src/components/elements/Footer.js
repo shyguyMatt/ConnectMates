@@ -11,10 +11,11 @@ import {
   FaUserTie,
   FaWhatsapp,
 } from 'react-icons/fa';
+
 import './../../styles/footer.css';
 
-
 const ICON_SIZE = 20;
+
 
 export default function Footer() {
   return (
@@ -22,7 +23,7 @@ export default function Footer() {
       <div class="footContainer">
         <div class="footer-content">
           <div class="contact-info">
-            <h3>Contact Us</h3>
+            <h3><b>Contact Us</b></h3>
             <p><FaRegBuilding size={ICON_SIZE} />1 Main Street, Kill Devil Hills, North Carolina</p>
             <p><FaWhatsapp size={ICON_SIZE} /> Phone: (000) 867-5309</p>
             <p><FaRegEnvelope size={ICON_SIZE} />Email: ConnectMates@Gmail.com</p>
@@ -35,7 +36,7 @@ export default function Footer() {
           </div>
           <img src={require('./../../assets/images/torch.gif')} alt="Torch"></img>
           <div class="groupLinks">
-            <h3>Connect with Us</h3>
+            <h3><b>Connect with Us</b></h3>
             <ul>
               <li><a href="https://github.com/JessePomeroy"><FaUserTie size={ICON_SIZE} />Jesse Pomerroy</a></li>
               <li><a href="https://github.com/kevhuff"><FaUserAstronaut size={ICON_SIZE} />Kevin Huff</a></li>

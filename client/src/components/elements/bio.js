@@ -57,7 +57,9 @@ function BioSection({user}) {
         <p>{bioText}</p>
       </div>
       <div>
-        <button onClick={openModal}>+</button>
+      <button onClick={openModal} className="bg-gradient-to-tr from-red-900 via-red-950 to-black text-white font-bold p-2 rounded mt-2 transition-shadow shadow-md hover:shadow-lg">
+            Add to bio
+          </button>
       </div>
 
       <Modal

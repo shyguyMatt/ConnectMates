@@ -46,7 +46,7 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-2">Groups you are admin of:</h2>
           {adminGroups.map((group) => (
             <div key={group._id} className="p-2 bg-gray-700 rounded shadow-sm space-y-2">
-              <h2 className="text-xl">This is an admin group</h2>
+              <h2 className="text-xl">{group.name}</h2>
               <NavLink to={`/group?group=${group._id}`} className="text-red-500 hover:text-red-700">
                 Go to Group
               </NavLink>
@@ -57,7 +57,7 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-2">Groups you are a member in:</h2>
           {memberGroups.map((group) => (
             <div key={group._id} className="p-2 bg-gray-700 rounded shadow-sm space-y-2">
-              <h2 className="text-xl">This is a member group</h2>
+              <h2 className="text-xl">{group.name}</h2>
               <NavLink to={`/group?group=${group._id}`} className="text-red-500 hover:text-red-700">
                 Go to Group
               </NavLink>

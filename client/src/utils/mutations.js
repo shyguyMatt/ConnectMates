@@ -76,4 +76,50 @@ mutation createGroup($userId: ID!, $groupName: String!, $interests: [ID]!) {
       name
     }
   }
-}`
+}
+`;
+
+export const REQUEST_JOIN = gql`
+mutation requestJoin($userId: ID!, $groupId: ID!) {
+  requestJoin(userId: $userId, groupId: $groupId) {
+    _id
+    name
+  }
+}
+`;
+
+export const ACCEPT_REQUEST = gql`
+mutation acceptRequest($groupId: ID!, $userId: ID!) {
+  acceptRequest(groupId: $groupId, userId: $userId) {
+    _id
+    name
+  }
+}
+`;
+
+export const DENY_REQUEST = gql`
+mutation denyRequest($groupId: ID!, $userId: ID!) {
+  rejectRequest(groupId: $groupId, userId: $userId) {
+    _id
+    name
+  }
+}
+`;
+
+export const REMOVE_USER = gql`
+mutation removeUser($groupId: ID!, $userId: ID!) {
+  removeUser(groupId: $groupId, userId: $userId) {
+    _id
+    name
+  }
+}
+`;
+
+export const PROMOTE_USER = gql`
+mutation promoteUser($groupId: ID!, $userId: ID!) {
+  promoteUser(groupId: $groupId, userId: $userId) {
+    _id
+    name
+  }
+}
+`;

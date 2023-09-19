@@ -26,6 +26,12 @@ const groupSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Interest'
         }
+    ],
+    requests: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
     ]
 });
 

@@ -9,8 +9,9 @@ nav {
     width: 25%;
     height: 100%;
     background-image: url('./../assets/images/navbar-scroll.png');
-    background-size: cover;
-    background-position: 60% 410%;
+    background-size: 83%;
+    /* background-position: 60% 410%; */
+    background-position: center;
     padding: 2rem 1rem 1rem 7rem;
     transition: transform 1s;
     z-index: 1;
@@ -53,6 +54,8 @@ nav {
     width: 300px;
     height: 200px;
     cursor: url(../assets/images/cursor.png), auto;
+    margin-left: 100px;
+
 }
 
 .nav-link {
@@ -71,8 +74,8 @@ nav {
     cursor: url(../assets/images/cursor.png), auto;
 }
 
-.nav-link span {
-    margin-left: 10px;
+.font {
+    margin-right: 150px;
 }
 
 .nav-top {
@@ -98,6 +101,7 @@ nav {
     nav {
         width: 40%;
         padding: 10px;
+        background-size: contain;
     }
 }
 

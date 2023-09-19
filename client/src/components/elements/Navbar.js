@@ -52,7 +52,7 @@ function Navbar({ visible, show }) {
                         {Auth.loggedIn() ?
                             <button onClick={Auth.logout}>logout</button>
                             :
-                            <NavLink to='/home'>login</NavLink>}
+                            <NavLink to='/login'>login</NavLink>}
                     </div>
                     {/* <div className="links nav-top">
                         <NavLink to="/xpagename" className="nav-link">

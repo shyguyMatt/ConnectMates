@@ -33,6 +33,10 @@
     padding: 0;
 }
 
+svg {
+    margin: 0 auto;
+}
+
 .groupLinks ul {
     list-style: none;
     padding: 0;

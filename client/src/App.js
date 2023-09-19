@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, NavLink } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Auth from './utils/auth';
@@ -71,7 +71,7 @@ export default function App() {
                 
               </div>
             } />
-            <Route path='/home' element={<Home />} />
+            <Route path='/home' element={Auth.loggedIn() ? <Home /> : <LoginSignUp />} />
             <Route path='/login' element={<LoginSignUp />} />
             <Route path='/profile' element={Auth.loggedIn() ? <Profile /> : <LoginSignUp />} />
             <Route path='/search' element={<Search />} />

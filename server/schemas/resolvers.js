@@ -103,7 +103,18 @@ const resolvers = {
                 name: groupName,
                 admin: userId,
                 interests: interests,
-        })
+            })
+        },
+
+        requestJoin: async (parent, {userId, groupId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $push: { requests: userId } },
+                {
+                    new: true,
+                    runValidators: true,
+                }
+            )
         }
     },
 };

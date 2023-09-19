@@ -14,7 +14,9 @@ export default function Group() {
   const { loading: loadingGroup, data: groupData } = useQuery(QUERY_GROUP_ID, {
     variables: { groupId: groupId }
   })
+  console.log(groupData)
   const group = groupData?.findGroupId || {};
+  console.log(group)
 
   const isAdmin = () => {
     for(let i=0; i<group.admin.length; i++) {
@@ -23,6 +25,10 @@ export default function Group() {
       }      
     }
     return false;
+  }
+
+  if(loadingGroup) {
+    return(<div>Loading...</div>)
   }
 
   return(

@@ -1,13 +1,22 @@
 import React from 'react';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { REQUEST_JOIN } from './../../utils/mutations';
 import { QUERY_USERS_BY_INTERESTS, QUERY_INTERESTS } from '../../utils/queries';
+
+import Auth from './../../utils/auth'
 
 export default function Search() {
 
   // Get keys from URL
   const urlParams = new URLSearchParams(window.location.search)
   const keys = urlParams.getAll('key')
+
+  const token = Auth.getToken()
+  const userId = Auth.getProfile(token).data._id;
+
+  // Define mutations
+  const [requestJoin, { error }] = useMutation(REQUEST_JOIN);
 
   // Define query to get all interests from database
   const { loading: loadingInterests, data: interestData} = useQuery(QUERY_INTERESTS)
@@ -35,6 +44,19 @@ export default function Search() {
   })
   const users = userData?.userByInterest || [];
   const groups = userData?.groupByInterest || [];
+
+  const handleRequestJoin = async (e) => {
+    try {
+      const groupId = e.target.value
+      
+      const { data } = await requestJoin({
+        variables: { userId: userId, groupId: groupId }
+      })
+
+    } catch(err) {
+      console.error(err)
+    }
+  }
 
   if(loadingUsers) {
     return(
@@ -75,6 +97,7 @@ export default function Search() {
                   )
                 })}
               </ul>
+              <button value={group._id} onClick={handleRequestJoin}>request join</button>
             </div>
           )
         })}

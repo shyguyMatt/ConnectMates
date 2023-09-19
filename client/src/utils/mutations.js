@@ -76,4 +76,12 @@ mutation createGroup($userId: ID!, $groupName: String!, $interests: [ID]!) {
       name
     }
   }
+}
+`;
+export const REQUEST_JOIN = gql`
+mutation requestJoin($userId: ID!, $groupId: ID!) {
+  requestJoin(userId: $userId, groupId: $groupId) {
+    _id
+    name
+  }
 }`

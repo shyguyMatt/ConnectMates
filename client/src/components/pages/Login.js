@@ -4,7 +4,7 @@ import React from 'react';
 import LoginForm from '../forms/LoginForm';
 import SignupForm from '../forms/SignupForm';
 
-import './../../styles/home.css';
+// import './../../styles/home.css';
 
 
 export default function LoginSignUp() {

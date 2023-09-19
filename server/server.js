@@ -8,6 +8,12 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+app.use(express.static('public'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
 const server = new ApolloServer({
     typeDefs,
     resolvers,

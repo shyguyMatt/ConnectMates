@@ -76,12 +76,10 @@ export default function LoginForm() {
             </div>
           </div>
           <div>
-            <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-bold rounded-md bg-gradient-to-tr from-red-900 via-red-950 to-black hover:from-red-700 hover:via-red-850 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-bold rounded-md bg-gradient-to-tr from-green-700 via-green-800 to-black hover:from-green-600 hover:via-green-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
               Log in
             </button>
-            <button type="button" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-bold rounded-md mt-4 bg-gradient-to-tr from-green-700 via-green-800 to-black hover:from-green-600 hover:via-green-700 hover:to-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-              Sign Up
-            </button>
+          
           </div>
         </form>
       </div>

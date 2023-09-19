@@ -75,7 +75,7 @@ export default function App() {
             <Route path='/login' element={<LoginSignUp />} />
             <Route path='/profile' element={Auth.loggedIn() ? <Profile /> : <LoginSignUp />} />
             <Route path='/search' element={<Search />} />
-            <Route path='/group' element={<Group />} />
+            <Route path='/group' element={Auth.loggedIn() ? <Group /> : <LoginSignUp />} />
           </Routes>
 
           <Footer />

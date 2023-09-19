@@ -37,31 +37,37 @@ export default function Home() {
     )
   }
 
-  return(
-    <div className='homeContainer'>
+  return (
+    <div className="bg-[#838383c6] text-white p-10 m-16 flex flex-col justify-center items-center rounded-xl shadow-2xl space-y-10">
 
-      <div className='adminGroups'>
-        <h2>Groups you are admin of:</h2>
-        {adminGroups.map((group) => (
-          <div key={group._id}>
-            <h2>this is am admin group</h2>
-            <NavLink to={`/group?group=${group._id}`}
-            >Go to Group</NavLink>
-          </div>
+      <div className="flex w-full space-x-10 mb-10"> {/* Container for the two groups side by side */}
+      
+        <div className="w-1/2 bg-gray-800 p-4 rounded shadow-md space-y-4"> {/* Admin Groups */}
+          <h2 className="text-2xl font-semibold mb-2">Groups you are admin of:</h2>
+          {adminGroups.map((group) => (
+            <div key={group._id} className="p-2 bg-gray-700 rounded shadow-sm space-y-2">
+              <h2 className="text-xl">This is an admin group</h2>
+              <NavLink to={`/group?group=${group._id}`} className="text-red-500 hover:text-red-700">
+                Go to Group
+              </NavLink>
+            </div>
           ))}
-      </div>
+        </div>
+        <div className="w-1/2 bg-gray-800 p-4 rounded shadow-md space-y-4"> {/* Member Groups */}
+          <h2 className="text-2xl font-semibold mb-2">Groups you are a member in:</h2>
+          {memberGroups.map((group) => (
+            <div key={group._id} className="p-2 bg-gray-700 rounded shadow-sm space-y-2">
+              <h2 className="text-xl">This is a member group</h2>
+              <NavLink to={`/group?group=${group._id}`} className="text-red-500 hover:text-red-700">
+                Go to Group
+              </NavLink>
+            </div>
+          ))}
+        </div>
 
-      <div className='memberGroups'>
-        <h2>Groups you are a member in:</h2>
-        {memberGroups.map((group) => (
-          <div key={group._id}>
-            <h2>this is a member group</h2>
-            <NavLink to={`/group?group=${group._id}`}
-            >Go to Group</NavLink>
-          </div>
-        ))}
-      </div>
-        <NewGroup user={user}/>
+      </div> {/* End of side by side groups container */}
+
+      <NewGroup user={user} />
     </div>
   )
 };

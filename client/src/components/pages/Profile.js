@@ -72,9 +72,6 @@ export default function Profile() {
         <div className="bg-gray-800 p-4 rounded shadow-md">
           <h4 className="text-xl font-semibold mb-2">About {user.name}</h4>
           <BioSection user={user} />
-          <button className="bg-gradient-to-tr from-red-900 via-red-950 to-black text-white font-bold p-2 rounded mt-2 transition-shadow shadow-md hover:shadow-lg">
-            Add to bio
-          </button>
         </div>
       </section>
   
@@ -88,7 +85,7 @@ export default function Profile() {
               </li>
             ))}
           </ul>
-  
+
           <select id="interestSelect" name="interests" className="w-full p-2 mb-2 bg-gray-600 hover:bg-gray-700 rounded transition-colors shadow-sm">
             <option value="">--Select an Option--</option>
             {interests.map((interest) => (
@@ -97,19 +94,24 @@ export default function Profile() {
               </option>
             ))}
           </select>
-  
+
           <button className="text-center text-sm w-20 h-10 bg-gradient-to-tr from-red-900 via-red-950 to-black text-white font-bold shadow-md hover:scale-105 rounded-xl"
                   onClick={handleAddInterest}>
             Add interest
           </button>
         </aside>
-  
-        <div className="flex-grow space-y-4 bg-gray-800 p-4 rounded shadow-md">
+
+        <div className="flex-grow space-y-4 bg-gray-800 p-4 rounded shadow-md justify-content-center">
           <h3 className="text-xl font-semibold mb-4">Completed Projects</h3>
           <ul className="list-disc list-inside space-y-2">
             <li>Visual test 1</li>
             <li>Visual test 2</li>
             <li>Visual test 3</li>
+          </ul>
+          <h3 className="text-xl font-semibold mb-4">Currant Groups</h3>
+          <ul className="list-disc list-inside space-y-2">
+            <li>Group 1</li>
+            <li>Group 2</li>
           </ul>
         </div>
       </section>

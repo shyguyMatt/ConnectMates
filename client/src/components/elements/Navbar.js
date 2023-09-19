@@ -47,6 +47,13 @@ function Navbar({ visible, show }) {
                             alt="logo"
                         />
                     </NavLink>
+                    <div className='login'>
+                        <h2>Welcome: {'user'}</h2>
+                        {Auth.loggedIn() ?
+                            <button onClick={Auth.logout}>logout</button>
+                            :
+                            <NavLink to='/home'>login</NavLink>}
+                    </div>
                     {/* <div className="links nav-top">
                         <NavLink to="/xpagename" className="nav-link">
                             <FaReadme size={ICON_SIZE} />

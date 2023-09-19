@@ -78,9 +78,28 @@ mutation createGroup($userId: ID!, $groupName: String!, $interests: [ID]!) {
   }
 }
 `;
+
 export const REQUEST_JOIN = gql`
 mutation requestJoin($userId: ID!, $groupId: ID!) {
   requestJoin(userId: $userId, groupId: $groupId) {
+    _id
+    name
+  }
+}
+`;
+
+export const ACCEPT_REQUEST = gql`
+mutation acceptRequest($groupId: ID!, $acceptId: ID!) {
+  acceptRequest(groupId: $groupId, acceptId: $acceptId) {
+    _id
+    name
+  }
+}
+`;
+
+export const DENY_REQUEST = gql`
+mutation denyRequest($groupId: ID!, $rejectId: ID!) {
+  rejectRequest(groupId: $groupId, rejectId: $rejectId) {
     _id
     name
   }

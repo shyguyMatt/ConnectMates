@@ -35,7 +35,7 @@ const resolvers = {
         },
 
         findGroupId: async (parent, { groupId }) => {
-            return Group.findOne({ _id: groupId }).populate('interests').populate({path: 'users', populate: {path: 'interests'}}).populate({path: 'admin', populate: {path: 'interests'}});
+            return Group.findOne({ _id: groupId }).populate('interests').populate({path: 'users', populate: {path: 'interests'}}).populate({path: 'admin', populate: {path: 'interests'}}).populate('requests');
         }
     },
 
@@ -115,7 +115,25 @@ const resolvers = {
                     runValidators: true,
                 }
             )
-        }
+        },
+
+        acceptRequest: async (parent, {groupId, acceptId}) => {
+            const data = await Group.findOneAndUpdate(
+                { _id: groupId },
+                { $push: { users: acceptId }},
+            )
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { requests: acceptId }},
+            )
+        },
+
+        rejectRequest: async (parent, {groupId, rejectId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { requests: rejectId }},
+            )
+        },
     },
 };
 

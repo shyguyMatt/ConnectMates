@@ -28,7 +28,7 @@ type Group {
     users: [User]
     groupSize: Int
     interests: [Interest]
-    requests: [String]
+    requests: [User]
 }
 
 type Query {
@@ -49,6 +49,8 @@ type Mutation {
 
     createGroup(userId: ID!, groupName: String!, interests: [ID]!): Group
     requestJoin(userId: ID!, groupId: ID!): Group
+    acceptRequest(groupId: ID!, acceptId: ID!): User
+    rejectRequest(groupId: ID!, rejectId: ID!): User
 
     addInterest(userId: ID!, interest: ID!): User
     removeUser(userId: ID!): User

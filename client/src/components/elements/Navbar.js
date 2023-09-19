@@ -45,7 +45,7 @@ function Navbar({ visible, show }) {
                             alt="logo"
                         />
                     </NavLink>
-                    <div className="links nav-top">
+                    {/* <div className="links nav-top">
                         <NavLink to="/xpagename" className="nav-link">
                             <FaReadme size={ICON_SIZE} />
                             <span className="font"></span>
@@ -55,7 +55,7 @@ function Navbar({ visible, show }) {
                             <span className="font"></span>
                         </NavLink>
 
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="links">
@@ -63,16 +63,16 @@ function Navbar({ visible, show }) {
                         <FaHome size={ICON_SIZE} />
                         <span className="font">Home</span>
                     </NavLink>
-                    <NavLink to="https://github.com/shyguyMatt/ConnectMates" className="nav-link">
-                        <FaGithubAlt size={ICON_SIZE} />
-                        <span className="font">Github</span>
+                    <NavLink to="/Profile" className="nav-link">
+                        <FaTerminal size={ICON_SIZE} />
+                        <span className="font">Profile</span>
                     </NavLink>
-                    <div>
-                        <NavLink to="/Profile" className="nav-link">
-                            <FaTerminal size={ICON_SIZE} />
-                            <span className="font">Profile</span>
+                    {/* <div>
+                        <NavLink to="https://github.com/shyguyMatt/ConnectMates" className="nav-link">
+                            <FaGithubAlt size={ICON_SIZE} />
+                            <span className="font">Github</span>
                         </NavLink>
-                    </div>
+                    </div> */}
                 </div>
             </nav >
         </>

@@ -29,8 +29,8 @@ export default function Footer() {
           </div>
           <img src={require('./../../assets/images/torch.gif')} alt="Torch"></img>
           <div class="quick-links">
-            <h3>Quick Links</h3>
-            <p><a href="/Home"><FaHome size={ICON_SIZE} /></a></p>
+            <h3><b>Quick Links</b></h3>
+            <p><a className="svg" href="/Home"><FaHome size={ICON_SIZE} /></a></p>
             <p><a href="/Profile"><FaRegUserCircle size={ICON_SIZE} /></a></p>
           </div>
           <img src={require('./../../assets/images/torch.gif')} alt="Torch"></img>

@@ -12,8 +12,8 @@ export default function Search() {
   const urlParams = new URLSearchParams(window.location.search)
   const keys = urlParams.getAll('key')
 
-  const token = Auth.getToken()
-  const userId = Auth.getProfile(token).data._id;
+  const token = Auth.loggedIn()? Auth.getToken() : null;
+  const userId = token? Auth.getProfile(token).data._id : null;
 
   // Define mutations
   const [requestJoin, { error }] = useMutation(REQUEST_JOIN);
@@ -97,7 +97,12 @@ export default function Search() {
                   )
                 })}
               </ul>
-              <button value={group._id} onClick={handleRequestJoin}>request join</button>
+              {Auth.loggedIn()?
+                <button value={group._id} onClick={handleRequestJoin}>request join</button>
+                :
+                <div/>
+              }
+
             </div>
           )
         })}

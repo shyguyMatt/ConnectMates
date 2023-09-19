@@ -47,6 +47,13 @@ type Mutation {
     login(email: String!, password: String!): Auth
 
     createGroup(userId: ID!, groupName: String!, interests: [ID]!): Group
+    requestJoin(userId: ID!, groupId: ID!): Group
+    acceptRequest(groupId: ID!, userId: ID!): User
+    rejectRequest(groupId: ID!, userId: ID!): User
+    removeUser(groupId: ID!, userId: ID!): User
+    promoteUser(groupId: ID!, userId: ID!): User
+    removeAdmin(groupId: ID!, userId: ID!): User
+    deleteGroup(groupId: ID!): Group
 
     addInterest(userId: ID!, interest: ID!): User
     removeUser(userId: ID!): User

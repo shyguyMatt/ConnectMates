@@ -104,7 +104,68 @@ const resolvers = {
                 admin: userId,
                 interests: interests,
             })
-        }
+        },
+
+        requestJoin: async (parent, {userId, groupId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $push: { requests: userId } },
+                {
+                    new: true,
+                    runValidators: true,
+                }
+            )
+        },
+
+        acceptRequest: async (parent, {groupId, userId}) => {
+            const data = await Group.findOneAndUpdate(
+                { _id: groupId },
+                { $push: { users: userId }},
+            )
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { requests: userId }},
+            )
+        },
+
+        rejectRequest: async (parent, {groupId, userId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { requests: userId }},
+            )
+        },
+
+        removeUser: async (parent, {groupId, userId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { users: userId }}
+            )
+        },
+
+        promoteUser: async (parent, {groupId, userId}) => {
+            const data = await Group.findOneAndUpdate(
+                { _id: groupId },
+                { $push: { admin: userId}},
+            )
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { users: userId }},
+            )
+        },
+
+        removeAdmin: async (parent, {groupId, userId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { admin: userId }}
+            )
+        },
+
+        deleteGroup: async (parent, {groupId}) => {
+            return Group.findOneAndDelete(
+                { _id: groupId }
+            )
+        },
+
     },
 };
 

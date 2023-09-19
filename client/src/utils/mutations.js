@@ -123,4 +123,23 @@ mutation promoteUser($groupId: ID!, $userId: ID!) {
     name
   }
 }
+
+`;
+
+export const REMOVE_ADMIN = gql`
+mutation removeAdmin($groupId: ID!, $userId: ID!) {
+  removeAdmin(groupId: $groupId, userId: $userId) {
+    _id
+    name
+  }
+}
+`;
+
+export const DELETE_GROUP = gql`
+mutation deleteGroup($groupId: ID!) {
+  deleteGroup(groupId: $groupId) {
+    _id
+    name
+  }
+}
 `;

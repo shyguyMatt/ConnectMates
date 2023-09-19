@@ -48,10 +48,14 @@ export default function Search() {
   const handleRequestJoin = async (e) => {
     try {
       const groupId = e.target.value
+      console.log(e)
       
       const { data } = await requestJoin({
         variables: { userId: userId, groupId: groupId }
       })
+
+      e.target.innerText = 'Request Sent';
+      e.target.disabled = true;
 
     } catch(err) {
       console.error(err)
@@ -65,40 +69,38 @@ export default function Search() {
   }
 
   return(
-    <div>
-      <div className='users'>
-        {/* For each returned user return element containing user info */}
-        {users.map((user) => {
-          return(
-            <div className='card border-solid border-2 border-sky-500' key={user._id}>
-              <h3>{user.name}</h3>
-              <h4>{user.email}</h4>
-              <ul>
-                {user.interests.map((interest) => {
-                  return(
-                    <li key={interest._id}>{interest.name}</li>
-                  )
-                })}
-              </ul>
-            </div>
-          )
-        })}        
-      </div>
-
-      <div className='groups'>
+    <div className="bg-[#838383c6] text-white p-10 m-16 flex flex-row justify-around items-center rounded-xl shadow-2xl space-y-10">
+      {/* Groups */}
+      <div className='basis-1/2 bg-gray-800 m-3 p-3 rounded-xl overflow-auto max-h-96 h-96'>
+        <h1 className='text-3xl'>Groups</h1>
         {groups.map((group) => {
           return(
-            <div className='card border-solid border-2 border-red-500' key={group._id}>
-              <h3>{group.name}</h3>
-              <ul>
-                {group.interests.map((interest) => {
-                  return(
-                    <li key={interest._id}>{interest.name}</li>
-                  )
-                })}
-              </ul>
+            <div className='m-2 p-2 border-2 border-white' key={group._id}>
+              <div className='flex flex-row'>
+
+                <div className='basis-1/4'>
+                  <h3 className='text-2xl'>{group.name}</h3>                
+                </div>
+
+                <div className='basis-2/4'>
+                  <ul>
+                    {group.interests.map((interest) => {
+                      return(
+                        <li key={interest._id}>{interest.name}</li>
+                      )
+                    })}
+                  </ul>                
+                </div>
+
+                <div className='basis-1/4'></div>
+              </div>
+
               {Auth.loggedIn()?
-                <button value={group._id} onClick={handleRequestJoin}>request join</button>
+                <button
+                  className='hover:bg-[#d1d1d19a] w-full text-left p-1'
+                  value={group._id}
+                  onClick={handleRequestJoin}
+                >request join</button>
                 :
                 <div/>
               }
@@ -106,6 +108,37 @@ export default function Search() {
             </div>
           )
         })}
+      </div>
+
+      {/* Users */}
+      <div className='basis-1/2 bg-gray-800 p-3 rounded-xl overflow-auto max-h-96 h-96'>
+        <h1 className='text-3xl'>Users</h1>
+        {/* For each returned user return element containing user info */}
+        {users.map((user) => {
+          return(
+            <div className='m-2 p-2 border-2 border-white' key={user._id}>
+              <div className='flex flex-row'>
+                <div className='basis-1/4'>
+                  <h3 className='text-2xl'>{user.name}</h3>
+                </div>
+
+                <div className='basis-1/2'>
+                  <ul>
+                    {user.interests.map((interest) => {
+                      return(
+                        <li key={interest._id}>{interest.name}</li>
+                      )
+                    })}
+                  </ul>
+                </div>
+
+                <div className='basis-1/4'>
+                  <h4>{user.bio}</h4>                  
+                </div>
+              </div>
+            </div>
+          )
+        })}        
       </div>
     </div>
   )

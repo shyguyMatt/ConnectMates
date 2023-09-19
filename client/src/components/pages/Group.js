@@ -189,7 +189,7 @@ export default function Group() {
         <div className='basis=1/3' />
       </div>
 
-      <div className="bg-[#838383c6] text-white p-10 m-16 flex flex-row justify-center items-center rounded-xl shadow-2xl space-y-10">
+      <div className="bg-[#838383c6] text-white p-10 m-16 flex flex-row justify-center items-center align-top rounded-xl shadow-2xl space-y-10">
         {/* Users Panel */}
         <div className='basis-1/4 bg-[#535353] p-3 rounded-xl overflow-auto scroll max-h-96 h-96'>
           <h2>Admins</h2>

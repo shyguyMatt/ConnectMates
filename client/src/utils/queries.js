@@ -80,6 +80,7 @@ export const QUERY_GROUP_ID = gql`
       name
       requests {
         _id
+        name
       }
       interests {
         _id

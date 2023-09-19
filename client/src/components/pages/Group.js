@@ -3,7 +3,7 @@ import Avatar from 'react-avatar';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_GROUP_ID } from './../../utils/queries';
-import { DENY_REQUEST, ACCEPT_REQUEST, REMOVE_USER, PROMOTE_USER } from './../../utils/mutations';
+import { DENY_REQUEST, ACCEPT_REQUEST, REMOVE_USER, PROMOTE_USER, REMOVE_ADMIN, DELETE_GROUP } from './../../utils/mutations';
 
 import Auth from './../../utils/auth';
 
@@ -26,6 +26,8 @@ export default function Group() {
   const [acceptRequest, { error: acceptError }] = useMutation(ACCEPT_REQUEST);
   const [removeUser, { error: removeError }] = useMutation(REMOVE_USER);
   const [promoteUser, { error: promoteError }] = useMutation(PROMOTE_USER);
+  const [removeAdmin, { error: removeAdminError }] = useMutation(REMOVE_ADMIN);
+  const [deleteGroup, { error: deleteGroupError }] = useMutation(DELETE_GROUP);
 
   const { loading: loadingGroup, data: groupData } = useQuery(QUERY_GROUP_ID, {
     variables: { groupId: groupId }
@@ -131,6 +133,54 @@ export default function Group() {
     }
   }
 
+  const leaveGroup = async () => {
+    const userId = Auth.loggedIn()? Auth.getProfile(Auth.getToken()).data._id : null;
+    if(isAdmin()) {
+      if(!window.confirm('This will remove you from the group!')) {
+        return
+      }
+      if(groupArray.admin.length < 2) {
+        if (window.confirm('You are the last Admin in the group!\nIf you leave now the group will be Deleted!')) {
+          try {
+            const { data } = await deleteGroup({
+              variables: { groupId: groupId }
+            })
+
+            window.location.assign('/');
+
+          } catch (err) {
+            console.error(err);
+          }
+        }        
+      }
+      try {
+        const { data } = await removeAdmin({
+          variables: { groupId: groupId, userId: userId }
+        })
+
+        window.location.assign('/');
+
+      } catch (err) {
+        console.error(err);
+      }
+
+    } else {
+      if(!window.confirm('This will remove you from the group!')) {
+        return
+      }
+      try {
+        const { data } = await removeUser({
+          variables: { groupId: groupId, userId: userId}
+        })
+
+        window.location.assign('/');
+
+      } catch (err) {
+        console.error(err)
+      }
+    }
+  }
+
   return(
     <div className='groupPage'>
       <div className='flex flex-row'>
@@ -141,7 +191,7 @@ export default function Group() {
 
       <div className="bg-[#838383c6] text-white p-10 m-16 flex flex-row justify-center items-center rounded-xl shadow-2xl space-y-10">
         {/* Users Panel */}
-        <div className='basis-1/4 bg-[#535353] p-3 rounded-xl overflow-auto max-h-96 h-96'>
+        <div className='basis-1/4 bg-[#535353] p-3 rounded-xl overflow-auto scroll max-h-96 h-96'>
           <h2>Admins</h2>
           <ul>
             {groupArray.admin.map((admin) => {
@@ -231,7 +281,11 @@ export default function Group() {
         }
 
         </div>
-      </div>        
+      </div>  
+      <button
+          className="px-5 py-2 bg-[#9c2731] text-gray-800 text-sm rounded hover:bg-red-600 p-2 focus:outline-white focus:bg-red-700 m-1"
+          onClick={leaveGroup}
+        >Leave Group</button>      
     </div>
 
   );

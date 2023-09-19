@@ -53,6 +53,8 @@ type Mutation {
     rejectRequest(groupId: ID!, userId: ID!): User
     removeUser(groupId: ID!, userId: ID!): User
     promoteUser(groupId: ID!, userId: ID!): User
+    removeAdmin(groupId: ID!, userId: ID!): User
+    deleteGroup(groupId: ID!): Group
 
     addInterest(userId: ID!, interest: ID!): User
     removeInterest(userId: ID!, interest: String!): User

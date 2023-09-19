@@ -138,7 +138,7 @@ const resolvers = {
         removeUser: async (parent, {groupId, userId}) => {
             return Group.findOneAndUpdate(
                 { _id: groupId },
-                { $pull: {users: userId }}
+                { $pull: { users: userId }}
             )
         },
 
@@ -150,6 +150,19 @@ const resolvers = {
             return Group.findOneAndUpdate(
                 { _id: groupId },
                 { $pull: { users: userId }},
+            )
+        },
+
+        removeAdmin: async (parent, {groupId, userId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { admin: userId }}
+            )
+        },
+
+        deleteGroup: async (parent, {groupId}) => {
+            return Group.findOneAndDelete(
+                { _id: groupId }
             )
         },
     },

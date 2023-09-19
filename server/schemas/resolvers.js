@@ -117,21 +117,39 @@ const resolvers = {
             )
         },
 
-        acceptRequest: async (parent, {groupId, acceptId}) => {
+        acceptRequest: async (parent, {groupId, userId}) => {
             const data = await Group.findOneAndUpdate(
                 { _id: groupId },
-                { $push: { users: acceptId }},
+                { $push: { users: userId }},
             )
             return Group.findOneAndUpdate(
                 { _id: groupId },
-                { $pull: { requests: acceptId }},
+                { $pull: { requests: userId }},
             )
         },
 
-        rejectRequest: async (parent, {groupId, rejectId}) => {
+        rejectRequest: async (parent, {groupId, userId}) => {
             return Group.findOneAndUpdate(
                 { _id: groupId },
-                { $pull: { requests: rejectId }},
+                { $pull: { requests: userId }},
+            )
+        },
+
+        removeUser: async (parent, {groupId, userId}) => {
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: {users: userId }}
+            )
+        },
+
+        promoteUser: async (parent, {groupId, userId}) => {
+            const data = await Group.findOneAndUpdate(
+                { _id: groupId },
+                { $push: { admin: userId}},
+            )
+            return Group.findOneAndUpdate(
+                { _id: groupId },
+                { $pull: { users: userId }},
             )
         },
     },

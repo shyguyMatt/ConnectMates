@@ -2,6 +2,7 @@ import {
     FaAngleLeft,
     FaAngleRight,
     FaBars,
+    FaDoorOpen,
     FaGithubAlt,
     FaHome,
     FaReadme,
@@ -9,8 +10,8 @@ import {
     FaTerminal,
     FaTree
 } from 'react-icons/fa';
-import { NavLink } from "react-router-dom"
-import Auth from './../../utils/auth'
+import { NavLink } from "react-router-dom";
+import Auth from './../../utils/auth';
 
 import './../../styles/navbar.css';
 
@@ -50,7 +51,8 @@ function Navbar({ visible, show }) {
                     <div className='login'>
                         <h2>Welcome: {'user'}</h2>
                         {Auth.loggedIn() ?
-                            <button onClick={Auth.logout}>logout</button>
+                            <button className='logout' onClick={Auth.logout}>
+                                <FaDoorOpen size={ICON_SIZE} /> logout</button>
                             :
                             <NavLink to='/login'>login</NavLink>}
                     </div>

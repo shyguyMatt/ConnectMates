@@ -54,8 +54,24 @@ nav {
     width: 300px;
     height: 200px;
     cursor: url(../assets/images/cursor.png), auto;
-    margin-left: 100px;
+    margin: 0 auto;
+}
 
+.login,
+.logout {
+    display: flex;
+    align-items: center;
+    color: #550000;
+    text-decoration: none;
+    padding: 10px 1rem;
+    border-radius: 5px;
+    margin: 10px 25px;
+}
+
+.logout:hover {
+    background-color: #da8080;
+    color: #4f0b0b;
+    cursor: url(../assets/images/cursor.png), auto;
 }
 
 .nav-link {

@@ -12,7 +12,7 @@ export const LOGIN_USER = gql`
   }
   `;
 
-  export const ADD_USER = gql`
+export const ADD_USER = gql`
     mutation addUser($name: String!, $email: String!, $password: String!) {
       addUser(name: $name, email: $email, password: $password) {
         token
@@ -24,7 +24,7 @@ export const LOGIN_USER = gql`
     }
     `;
 
-  export const ADD_INTEREST = gql`
+export const ADD_INTEREST = gql`
     mutation addInterest($userId: ID!, $interest: ID!) {
       addInterest(userId: $userId, interest: $interest) {
         _id
@@ -39,13 +39,14 @@ export const LOGIN_USER = gql`
     `;
 
 export const REMOVE_INTEREST = gql`
-mutation removeSkill($interest: String!) {
-  removeInterest(interest: $interest) {
-    _id
-    name
-    interest
+  mutation removeInterest($userId: ID!, $interest: String!) {
+    removeInterest(userId: $userId, interest: $interest) {
+      _id
+      interests {
+          _id
+        }
+    }
   }
-}
 `;
 
 export const CHANGE_BIO = gql`

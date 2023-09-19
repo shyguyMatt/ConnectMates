@@ -11,11 +11,11 @@ const resolvers = {
         },
 
         userByInterest: async (parent, { interests }) => {
-            return User.find({ interests: { $all: interests} }).populate('interests');
+            return User.find({ interests: { $all: interests } }).populate('interests');
         },
 
         groupByInterest: async (parent, { interests }) => {
-            return Group.find({ interests: { $all : interests} }).populate('interests')
+            return Group.find({ interests: { $all: interests } }).populate('interests')
         },
 
         user: async (parent, { userId }) => {
@@ -27,15 +27,15 @@ const resolvers = {
         },
 
         findAdminGroups: async (parent, { userId }) => {
-            return Group.find({ admin: { $in: userId }}).populate('users').populate('admin').populate('interests');
+            return Group.find({ admin: { $in: userId } }).populate('users').populate('admin').populate('interests');
         },
 
         findMemberGroups: async (parent, { userId }) => {
-            return Group.find({ users: { $in: userId }}).populate('users').populate('admin').populate('interests');
+            return Group.find({ users: { $in: userId } }).populate('users').populate('admin').populate('interests');
         },
 
         findGroupId: async (parent, { groupId }) => {
-            return Group.findOne({ _id: groupId }).populate('interests').populate({path: 'users', populate: {path: 'interests'}}).populate({path: 'admin', populate: {path: 'interests'}}).populate('requests');
+            return Group.findOne({ _id: groupId }).populate('interests').populate({ path: 'users', populate: { path: 'interests' } }).populate({ path: 'admin', populate: { path: 'interests' } });
         }
     },
 
@@ -43,19 +43,19 @@ const resolvers = {
         addUser: async (parent, body) => {
             const user = await User.create(body);
 
-            if(!user) {
+            if (!user) {
                 return
             }
 
             const token = signToken(user);
 
-            return{ token, user }
+            return { token, user }
         },
 
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
-            if(!user) {
+            if (!user) {
                 throw new AuthenticationError('No user with this email or password found!')
             }
 
@@ -98,60 +98,13 @@ const resolvers = {
             )
         },
 
-        createGroup: async (parent, {userId, groupName, interests}) => {
+        createGroup: async (parent, { userId, groupName, interests }) => {
             return Group.create({
                 name: groupName,
                 admin: userId,
                 interests: interests,
             })
-        },
-
-        requestJoin: async (parent, {userId, groupId}) => {
-            return Group.findOneAndUpdate(
-                { _id: groupId },
-                { $push: { requests: userId } },
-                {
-                    new: true,
-                    runValidators: true,
-                }
-            )
-        },
-
-        acceptRequest: async (parent, {groupId, userId}) => {
-            const data = await Group.findOneAndUpdate(
-                { _id: groupId },
-                { $push: { users: userId }},
-            )
-            return Group.findOneAndUpdate(
-                { _id: groupId },
-                { $pull: { requests: userId }},
-            )
-        },
-
-        rejectRequest: async (parent, {groupId, userId}) => {
-            return Group.findOneAndUpdate(
-                { _id: groupId },
-                { $pull: { requests: userId }},
-            )
-        },
-
-        removeUser: async (parent, {groupId, userId}) => {
-            return Group.findOneAndUpdate(
-                { _id: groupId },
-                { $pull: {users: userId }}
-            )
-        },
-
-        promoteUser: async (parent, {groupId, userId}) => {
-            const data = await Group.findOneAndUpdate(
-                { _id: groupId },
-                { $push: { admin: userId}},
-            )
-            return Group.findOneAndUpdate(
-                { _id: groupId },
-                { $pull: { users: userId }},
-            )
-        },
+        }
     },
 };
 

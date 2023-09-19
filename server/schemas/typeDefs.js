@@ -28,6 +28,7 @@ type Group {
     users: [User]
     groupSize: Int
     interests: [Interest]
+    requests: [User]
 }
 
 type Query {

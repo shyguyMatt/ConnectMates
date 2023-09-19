@@ -8,6 +8,9 @@ import Auth from "../../utils/auth";
 
 import "./../../styles/Profile.css";
 import BioSection from "../elements/bio";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Profile() {
   // Checks if the user is logged in returns a profile information object
@@ -52,17 +55,19 @@ export default function Profile() {
   return (
     <div className="bg-[#838383c6] text-white p-10 m-16 flex flex-col justify-center items-center rounded-xl shadow-2xl space-y-10">
   
-      <section className="flex flex-col space-y-6">
-      <div className="relative w-32 h-32"> {/* container */}
-    <img src="" alt="User Profile" className="w-full h-full rounded-full bg-[#a9181877] shadow-lg" />
+    <section className="flex flex-col space-y-6">
+    <div className="relative w-32 h-32"> {/* container */}
+        <img src="" alt="User Profile" className="w-full h-full rounded-full bg-[#a9181877] shadow-lg" />
 
-    <button 
-        className="absolute bottom-0 right-0 bg-gradient-to-tr from-red-900 via-red-950 to-black text-white font-bold p-1 rounded-full transition-shadow shadow-md hover:shadow-lg text-sm"
-        style={{ marginBottom: '10px', marginRight: '10px' }}  // Adjust these values to position the button to your liking
-    >
-       
-    </button>
-</div>
+        {/* The three-dot options button */}
+        <button 
+            className="absolute bottom-0 right-0 bg-gradient-to-tr from-red-900 via-red-950 to-black text-white font-bold p-1 rounded-full transition-shadow shadow-md hover:shadow-lg text-sm"
+            style={{ marginBottom: '10px', marginRight: '10px' }}  // Adjust these values to position the button to your liking
+            // onClick={/* function to handle click (e.g., show options to change the profile picture) */}
+        >
+            <FontAwesomeIcon icon={faEllipsisV} />
+        </button>
+    </div>
 
   
         <div className="bg-gray-800 p-4 rounded shadow-md">

@@ -7,7 +7,6 @@ import Auth from './utils/auth';
 // Import elements
 import Footer from './components/elements/Footer';
 import Header from './components/elements/Header';
-import Modal from './components/elements/Modal';
 import Navbar from './components/elements/Navbar';
 import SearchBar from './components/elements/SearchBar';
 
@@ -22,19 +21,7 @@ import Group from './components/pages/Group'
 export default function App() {
   // Define States
   const [navVisible, showNavbar] = useState(false);  
-  // const [modal, setModal] = useState('');
 
-  // const handleModalClose = () => setModal('')
-
-  // const renderModal = () => {
-  //   if (modal) {
-  //     return <Modal modal={modal} handleModalClose={handleModalClose} />
-  //   }
-  //   return;
-  // }
-
-  // Set link to backend
-  // *NEEDS TO BE FIXED BEFORE PUSH TO HEROKU* //
   const httpLink = createHttpLink({
     uri: '/graphql',
   });
@@ -59,7 +46,6 @@ export default function App() {
     <ApolloProvider client={client}>
       <BrowserRouter >
         <div className="App">
-          {/* {renderModal()} */}
           <Navbar visible={navVisible} show={showNavbar} />
           <Header />
           <SearchBar  />

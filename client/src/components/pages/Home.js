@@ -23,6 +23,7 @@ export default function Home() {
     {variables: { userId: userId }});
   const adminGroups = groupData?.findAdminGroups || {};
   const memberGroups = groupData?.findMemberGroups || {};
+  console.log(groupData)
   
   if(loadingGroups) {
     return(
@@ -52,7 +53,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-
         <div className="w-1/2 bg-gray-800 p-4 rounded shadow-md space-y-4"> {/* Member Groups */}
           <h2 className="text-2xl font-semibold mb-2">Groups you are a member in:</h2>
           {memberGroups.map((group) => (

@@ -78,6 +78,10 @@ export const QUERY_GROUP_ID = gql`
     findGroupId(groupId: $groupId) {
       _id
       name
+      requests {
+        _id
+        name
+      }
       interests {
         _id
         name

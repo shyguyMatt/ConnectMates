@@ -50,7 +50,6 @@ type Mutation {
     createGroup(userId: ID!, groupName: String!, interests: [ID]!): Group
 
     addInterest(userId: ID!, interest: ID!): User
-    removeUser(userId: ID!): User
     removeInterest(userId: ID!, interest: String!): User
     changeBio(userId: ID!, newBio: String!): User
 }

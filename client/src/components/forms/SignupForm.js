@@ -5,7 +5,6 @@ import '../../styles/signupform.css';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from './../../utils/auth';
 
-
 export default function SignupForm() {
   // Define states to be used
   const [formState, setFormState] = useState({

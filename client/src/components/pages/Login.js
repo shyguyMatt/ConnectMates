@@ -8,16 +8,14 @@ import './../../styles/home.css';
 
 
 export default function LoginSignUp() {
-  return(
+  return (
     <div className='loginContainer'>
       <h1> </h1>
       <div>
-        <h2>Login</h2>
-      <LoginForm />
+        <LoginForm />
       </div>
       <div>
-        <h2>Sign Up</h2>
-      <SignupForm />
+        <SignupForm />
       </div>
     </div>
   )
